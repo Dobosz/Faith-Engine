@@ -1,4 +1,4 @@
-﻿Build started 2011-04-04 18:13:07.
+﻿Build started 2011-04-04 21:34:52.
      1>Project "X:\Faith-Engine\Faith-Engine\Faith-Engine.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Release\Faith-Engine.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -19,4 +19,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:07.26
+Time Elapsed 00:00:11.66
