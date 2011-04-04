@@ -1,6 +1,6 @@
 
-#ifndef GAMEENGINE_H
-#define GAMEENGINE_H
+#ifndef _GameEngine_H__
+#define _GameEngine_H__
 
 #include <Ogre.h>
 
@@ -72,3 +72,5 @@ public:
         mRoot->startRendering(); //Odpala g³ówna pêtle renderowania sceny.
     }
 };
+
+#endif
