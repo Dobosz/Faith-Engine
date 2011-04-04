@@ -8,6 +8,7 @@
 *********************************************************/
 
 //PROJEKT ZAK£ADA, ¯E MASZ OGRA SDK NA C:\Ogre SDK 1.7.1\. JAK JEST INACZEJ TO ZMIEN TO W PROJEKCIE ALBO LEPIEJ ZRÓB TAK JAK JA MAM BO BEDZIESZ ROBI£ SYF (!).
+//Dysk X ustaw sobie folder gdzie masz repo.
 
 // Ogre main lib
 #include <Ogre.h>
