@@ -1,10 +1,10 @@
 /********************************************************
-*					FAITH ENGINE 2011					*
-*														*
-*					  Marcin Dobosz						*
-*				  Bart³omiej Rinkiewicz					*
-* 		             Micha³ Kwestarz					*
-*														*
+*                   FAITH ENGINE 2011                   *
+*                                                       *
+*                     Marcin Dobosz                     *
+*                  Bratumi³ Rynkiewicz                  *
+*                    Micha³ Kwestarz                    *
+*                                                       *
 *********************************************************/
 
 //PROJEKT ZAK£ADA, ¯E MASZ OGRA SDK NA C:\Ogre SDK 1.7.1\. JAK JEST INACZEJ TO ZMIEN TO W PROJEKCIE ALBO LEPIEJ ZRÓB TAK JAK JA MAM BO BEDZIESZ ROBI£ SYF (!).
@@ -30,8 +30,8 @@ int main(int argc, char **argv) //ta funkcja main wykona siê jak nie jedziemy na
 	//Tworzy klase GameEngine
     try
     {
-        GameEngine Engine;
-        Engine.go();
+        GameEngine * Engine = new GameEngine;
+        Engine->Start();
     }
     catch(Exception& e) //Prosta obs³uga b³êdów.
     {

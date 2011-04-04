@@ -1,4 +1,7 @@
-#pragma once
+
+#ifndef GAMEENGINE_H
+#define GAMEENGINE_H
+
 #include <Ogre.h>
 
 using namespace Ogre;
@@ -10,53 +13,18 @@ protected:
 public:
     SceneManager *mSceneMgr; //Menadzer sceny, to przez niego umieszczasz elmenty na scenie. Jest public, bo nie wiem jeszcze czy coœ tam nie bêdzie chcia³o sie do nigo odwo³aæ.
 
-    GameEngine(void)
-    {
-    }
+    // Constructor
+    GameEngine();
+    // Destructor
+    ~GameEngine();
 
-    ~GameEngine(void)
-    {
-    }
+    void defineResources();
 
-    void go()
-    {
-        //Ta Funkcja jest funkcja która odpala ca³¹ reszte rzeczy potrzebnych do stworzenia sceny Ogra.
-        createRoot();
-        defineResources();
-        setupRenderSystem();
-        createRenderWindow();
-        initializeResourceGroups();
-        setupGUI();
-        setupScene();
-        setupInputSystem();
-        createFrameListener();
-        startRenderLoop();
-    }
+    void Start();
 
     void createRoot()
     {
         mRoot = new Root(); //Tworzenie rdzenia, korzenia silnika graficznego.
-    }
-
-    void defineResources()
-    {
-        //Napisa³em to funkcje ju¿ downo temu (chyba ja, ale nie jestem pewien na 100% :D). Odczytuje ona z pliku resources.cfg co ma za³adowaæ silnik. O szczegu³y wypataj mnie.
-        String secName, typeName, archName;
-        ConfigFile cf;
-        cf.load("resources.cfg");
-        ConfigFile::SectionIterator seci = cf.getSectionIterator();
-        while (seci.hasMoreElements())
-        {
-            secName = seci.peekNextKey();
-            ConfigFile::SettingsMultiMap *settings = seci.getNext();
-            ConfigFile::SettingsMultiMap::iterator i;
-            for (i = settings->begin(); i != settings->end(); ++i)
-            {
-                typeName = i->first;
-                archName = i->second;
-                ResourceGroupManager::getSingleton().addResourceLocation(archName, typeName, secName);
-            }
-        }
     }
 
     void setupRenderSystem()
