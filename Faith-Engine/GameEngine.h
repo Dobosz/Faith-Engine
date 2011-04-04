@@ -6,51 +6,51 @@ using namespace Ogre;
 class GameEngine
 {
 protected:
-	Root *mRoot; //G³ówny korzeñ silnika graficznego. Inicjalizacja nastêpuje w funkcji createRoot().
+    Root *mRoot; //GÅ‚Ã³wny korzeÅ„ silnika graficznego. Inicjalizacja nastÄ™puje w funkcji createRoot().
 public:
-	SceneManager *mSceneMgr; //Menadzer sceny, to przez niego umieszczasz elmenty na scenie. Jest public, bo nie wiem jeszcze czy coœ tam nie bêdzie chcia³o sie do nigo odwo³aæ.
+    SceneManager *mSceneMgr; //Menadzer sceny, to przez niego umieszczasz elmenty na scenie. Jest public, bo nie wiem jeszcze czy coÅ› tam nie bÄ™dzie chciaÅ‚o sie do nigo odwoÅ‚aÄ‡.
 
-	GameEngine(void)
-	{
-	}
-
-	~GameEngine(void)
-	{
-	}
-
-	void go()
+    GameEngine(void)
     {
-		//Ta Funkcja jest funkcja która odpala ca³¹ reszte rzeczy potrzebnych do stworzenia sceny Ogra.
+    }
+
+    ~GameEngine(void)
+    {
+    }
+
+    void go()
+    {
+        //Ta Funkcja jest funkcja ktÃ³ra odpala caÅ‚Ä… reszte rzeczy potrzebnych do stworzenia sceny Ogra.
         createRoot();
         defineResources();
         setupRenderSystem();
         createRenderWindow();
         initializeResourceGroups();
-		setupGUI();
+        setupGUI();
         setupScene();
         setupInputSystem();
         createFrameListener();
         startRenderLoop();
     }
 
-	 void createRoot()
+    void createRoot()
     {
-		mRoot = new Root(); //Tworzenie rdzenia, korzenia silnika graficznego.
+        mRoot = new Root(); //Tworzenie rdzenia, korzenia silnika graficznego.
     }
 
-	 void defineResources()
+    void defineResources()
     {
-		//Napisa³em to funkcje ju¿ downo temu (chyba ja, ale nie jestem pewien na 100% :D). Odczytuje ona z pliku resources.cfg co ma za³adowaæ silnik. O szczegu³y wypataj mnie.
-		String secName, typeName, archName;
+        //NapisaÅ‚em to funkcje juÅ¼ downo temu (chyba ja, ale nie jestem pewien na 100% :D). Odczytuje ona z pliku resources.cfg co ma zaÅ‚adowaÄ‡ silnik. O szczeguÅ‚y wypataj mnie.
+        String secName, typeName, archName;
         ConfigFile cf;
         cf.load("resources.cfg");
-		ConfigFile::SectionIterator seci = cf.getSectionIterator();
+        ConfigFile::SectionIterator seci = cf.getSectionIterator();
         while (seci.hasMoreElements())
         {
-			secName = seci.peekNextKey();
+            secName = seci.peekNextKey();
             ConfigFile::SettingsMultiMap *settings = seci.getNext();
             ConfigFile::SettingsMultiMap::iterator i;
-			for (i = settings->begin(); i != settings->end(); ++i)
+            for (i = settings->begin(); i != settings->end(); ++i)
             {
                 typeName = i->first;
                 archName = i->second;
@@ -59,48 +59,48 @@ public:
         }
     }
 
-	 void setupRenderSystem()
+    void setupRenderSystem()
     {
-		//Dobra to coœ pozwala ci na wybór czy renderujesz obraz w DirectX'ie czy w OpenGL'u. Rozdzielczoœæ i takie tam.
-		//Jak plik Ogre.cfg istnieje i mo¿na go odczytaæ to odpala konfigi z niego jak nie to opdala dialogboxa z opcjami konfiguracji.
-		if (!mRoot->restoreConfig() && !mRoot->showConfigDialog())
-            throw Exception(52, "User canceled the config dialog!", "Application::setupRenderSystem()");//Jak waszystko sie posypie to wywala b³¹d :P.
+        //Dobra to coÅ› pozwala ci na wybÃ³r czy renderujesz obraz w DirectX'ie czy w OpenGL'u. RozdzielczoÅ›Ä‡ i takie tam.
+        //Jak plik Ogre.cfg istnieje i moÅ¼na go odczytaÄ‡ to odpala konfigi z niego jak nie to opdala dialogboxa z opcjami konfiguracji.
+        if (!mRoot->restoreConfig() && !mRoot->showConfigDialog())
+            throw Exception(52, "User canceled the config dialog!", "Application::setupRenderSystem()");//Jak waszystko sie posypie to wywala bÅ‚Ä…d :P.
     }
 
-	 void createRenderWindow()
+    void createRenderWindow()
     {
-		//Tworzy okienko w WinApi.
-		 mRoot->initialise(true, "Faith Engine"); // "Faith Engine" - to nazwa okna pod Win32.
+        //Tworzy okienko w WinApi.
+        mRoot->initialise(true, "Faith Engine"); // "Faith Engine" - to nazwa okna pod Win32.
     }
 
-	  void initializeResourceGroups()
+    void initializeResourceGroups()
     {
-		TextureManager::getSingleton().setDefaultNumMipmaps(5); //Dotyczy techniki wyœfietlania tekstur. Nie ruszeaj tego. Jak chcesz wiedzieæ wiecej to zapytaj, albo google.
-        ResourceGroupManager::getSingleton().initialiseAllResourceGroups(); //£aduje wszystkie resoursy przeczytane z defineResources().
+        TextureManager::getSingleton().setDefaultNumMipmaps(5); //Dotyczy techniki wyÅ›fietlania tekstur. Nie ruszeaj tego. Jak chcesz wiedzieÄ‡ wiecej to zapytaj, albo google.
+        ResourceGroupManager::getSingleton().initialiseAllResourceGroups(); //Åaduje wszystkie resoursy przeczytane z defineResources().
     }
 
-	  void setupGUI()
-	{
-		//Na razie nie ma GUI ale bedzie trzeba zrobiæ implementacje jego w przysz³oœci. Czytaj w specyfikacji.
-	}
-
-	  void setupScene()
+    void setupGUI()
     {
-		mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "Default SceneManager"); //Inicjalizacja menadzera sceny.
-	}
-
-	 void setupInputSystem()
-    {
-		//Obs³uga klawiatury i myszki. Bedziemy u¿ywaæ bibliotek OIS, ale to innym razem.
-	}
-
-	 void createFrameListener()
-    {
-		//Tu deklaruje sie Listenery, to takie watki dla g³ównego loopa grafiki. Przyk³aday pokarze ci potem.
+        //Na razie nie ma GUI ale bedzie trzeba zrobiÄ‡ implementacje jego w przyszÅ‚oÅ›ci. Czytaj w specyfikacji.
     }
 
-	 void startRenderLoop()
+    void setupScene()
     {
-		 mRoot->startRendering(); //Odpala g³ówna pêtle renderowania sceny.
+        mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "Default SceneManager"); //Inicjalizacja menadzera sceny.
+    }
+
+    void setupInputSystem()
+    {
+        //ObsÅ‚uga klawiatury i myszki. Bedziemy uÅ¼ywaÄ‡ bibliotek OIS, ale to innym razem.
+    }
+
+    void createFrameListener()
+    {
+        //Tu deklaruje sie Listenery, to takie watki dla gÅ‚Ã³wnego loopa grafiki. PrzykÅ‚aday pokarze ci potem.
+    }
+
+    void startRenderLoop()
+    {
+        mRoot->startRendering(); //Odpala gÅ‚Ã³wna pÄ™tle renderowania sceny.
     }
 };
