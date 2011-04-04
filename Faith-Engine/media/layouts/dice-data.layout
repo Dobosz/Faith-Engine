@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout >
+    <Window Type="DefaultWindow" Name="Root" >
+        <Property Name="UnifiedAreaRect" Value="{{0,0},{0,0},{1,0},{1.01597,0}}" />
+        <Window Type="TaharezLook/FrameWindow" Name="Data" >
+            <Property Name="TitlebarFont" Value="DejaVuSans-10" />
+            <Property Name="TitlebarEnabled" Value="True" />
+            <Property Name="UnifiedAreaRect" Value="{{0.00634918,0},{0.0285429,0},{0.243452,0},{0.278543,0}}" />
+            <Window Type="TaharezLook/StaticText" Name="Pitch_text" >
+                <Property Name="Text" Value="Pitch:" />
+                <Property Name="HorzExtent" Value="49" />
+                <Property Name="VertExtent" Value="12.9502" />
+                <Property Name="UnifiedAreaRect" Value="{{0.0470413,0},{0.0966066,0},{0.354391,0},{0.346606,0}}" />
+            </Window>
+            <Window Type="TaharezLook/StaticText" Name="Roll_text" >
+                <Property Name="Text" Value="Roll:" />
+                <Property Name="HorzExtent" Value="39" />
+                <Property Name="VertExtent" Value="12.9502" />
+                <Property Name="UnifiedAreaRect" Value="{{0.0601219,0},{0.388223,0},{0.356164,0},{0.638223,0}}" />
+            </Window>
+            <Window Type="TaharezLook/StaticText" Name="Yaw_text" >
+                <Property Name="Text" Value="Yaw:" />
+                <Property Name="HorzExtent" Value="41" />
+                <Property Name="VertExtent" Value="12.9502" />
+                <Property Name="UnifiedAreaRect" Value="{{0.06758,0},{0.702994,0},{0.349543,0},{0.952994,0}}" />
+            </Window>
+            <Window Type="TaharezLook/Editbox" Name="Pitch" >
+                <Property Name="MaxTextLength" Value="1073741823" />
+                <Property Name="UnifiedAreaRect" Value="{{0.419104,0},{0.09526,0},{0.68435,0},{0.34526,0}}" />
+                <Property Name="TextParsingEnabled" Value="False" />
+            </Window>
+            <Window Type="TaharezLook/Editbox" Name="Roll" >
+                <Property Name="MaxTextLength" Value="1073741823" />
+                <Property Name="UnifiedAreaRect" Value="{{0.414463,0},{0.392141,0},{0.688077,0},{0.642141,0}}" />
+                <Property Name="TextParsingEnabled" Value="False" />
+            </Window>
+            <Window Type="TaharezLook/Editbox" Name="Yaw" >
+                <Property Name="MaxTextLength" Value="1073741823" />
+                <Property Name="UnifiedAreaRect" Value="{{0.414388,0},{0.66503,0},{0.688002,0},{0.91503,0}}" />
+                <Property Name="TextParsingEnabled" Value="False" />
+            </Window>
+            <Window Type="TaharezLook/Button" Name="Reset_Pitch" >
+                <Property Name="Text" Value="Reset" />
+                <Property Name="UnifiedAreaRect" Value="{{0.714644,0},{0.105697,0},{0.964644,0},{0.355697,0}}" />
+            </Window>
+            <Window Type="TaharezLook/Button" Name="Reset_Roll" >
+                <Property Name="Text" Value="Reset" />
+                <Property Name="UnifiedAreaRect" Value="{{0.71841,0},{0.41002,0},{0.96841,0},{0.66002,0}}" />
+            </Window>
+            <Window Type="TaharezLook/Button" Name="Reset_Yaw" >
+                <Property Name="Text" Value="Reset" />
+                <Property Name="UnifiedAreaRect" Value="{{0.717992,0},{0.682908,0},{0.967992,0},{0.932908,0}}" />
+            </Window>
+        </Window>
+    </Window>
+</GUILayout>

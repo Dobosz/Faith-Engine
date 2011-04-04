@@ -1,0 +1,48 @@
+
+particle_system Smoke/Cigaretes
+{
+	quota	10000
+	material	PE/smoke
+	particle_width	5
+	particle_height	65.86
+	cull_each	true
+	renderer	billboard
+	billboard_type	oriented_self
+
+	emitter Point
+	{
+		angle	117.8
+		colour	1 1 1 1
+		colour_range_start	1 1 1 1
+		colour_range_end	1 1 1 1
+		direction	-0.684313 -0.325257 0.652628
+		emission_rate	5
+		position	0.590229 14.6031 -13.8853
+		velocity	0
+		velocity_min	0
+		velocity_max	2
+		time_to_live	10.83
+		time_to_live_min	10.83
+		time_to_live_max	10.83
+		duration	0
+		duration_min	0
+		duration_max	0
+		repeat_delay	0
+		repeat_delay_min	0
+		repeat_delay_max	0
+	}
+
+	affector LinearForce
+	{
+		force_vector	2.94504 44.615 -2.90231
+		force_application	add
+	}
+
+	affector ColourFader
+	{
+		red	1
+		green	1
+		blue	1
+		alpha	5.15e-005
+	}
+}
