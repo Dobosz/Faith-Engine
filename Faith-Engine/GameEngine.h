@@ -3,6 +3,7 @@
 #define _GameEngine_H__
 
 #include <Ogre.h>
+#include <MainListener.h>
 
 using namespace Ogre;
 
@@ -22,7 +23,8 @@ public:
     SceneManager *mSceneMgr; //Menadzer sceny, to przez niego umieszczasz elmenty na scenie. Jest public, bo nie wiem jeszcze czy cos tam nie bedzie chcialo sie do nigo odwolac.
     Camera* mCamera;
     SceneNode* mCamNode;
-    Ogre::RenderWindow* mWindow;
+    RenderWindow* mWindow;
+    MainListener* mMainListener;
     
     // Singleton
     static GameEngine* getEngine();

@@ -17,6 +17,8 @@ GameEngine::~GameEngine()
     // Do we need to remove mRoot ? GameEngine will be initialized only once so killing it means whole game close
     if (mRoot)
         delete mRoot;
+    //this will close the game on GameEngine delete.
+    delete mMainListener;
 }
 
 // Signeton structure
@@ -123,7 +125,7 @@ void GameEngine::setupInputSystem()
 void GameEngine::createFrameListener()
 {
     //Tu deklaruje sie Listenery, to takie watki dla glownego loopa grafiki. Przykladay pokarze ci potem.
-    MainListener* mMainListener = new MainListener();
+    mMainListener = new MainListener();
     mRoot->addFrameListener(mMainListener);
 }
 

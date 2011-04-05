@@ -12,5 +12,6 @@ public:
     ~MainListener(void);
     bool frameStarted(const FrameEvent& evt);
     bool frameEnded(const FrameEvent& evt);
+    bool shutdown;
 };
 #endif
