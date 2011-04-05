@@ -1,4 +1,3 @@
-
 #ifndef _GameEngine_H__
 #define _GameEngine_H__
 
@@ -9,10 +8,10 @@ using namespace Ogre;
 class GameEngine
 {
 protected:
-    Root *mRoot; //G³owny korzen silnika graficznego. Inicjalizacja nastepuje w funkcji createRoot().
+    Root *mRoot; //Glowny korzen silnika graficznego. Inicjalizacja nastepuje w funkcji createRoot().
     static GameEngine *Singleton = NULL;
 public:
-    SceneManager *mSceneMgr; //Menadzer sceny, to przez niego umieszczasz elmenty na scenie. Jest public, bo nie wiem jeszcze czy cos tam nie bêdzie chcialo sie do nigo odwolac.
+    SceneManager *mSceneMgr; //Menadzer sceny, to przez niego umieszczasz elmenty na scenie. Jest public, bo nie wiem jeszcze czy cos tam nie bedzie chcialo sie do nigo odwolac.
     Camera* mCamera;
     SceneNode* mCamNode;
     Ogre::RenderWindow* mWindow;

@@ -48,8 +48,8 @@ GameEngine* GameEngine::getSingleton()
 
 void GameEngine::setupRenderSystem()
     {
-        //Dobra to cos pozwala ci na wybor czy renderujesz obraz w DirectX'ie czy w OpenGL'u. Rozdzielczoœæ i takie tam.
-        //Jak plik Ogre.cfg istnieje i mozna go odczytaæ to odpala konfigi z niego jak nie to opdala dialogboxa z opcjami konfiguracji.
+        //Dobra to cos pozwala ci na wybor czy renderujesz obraz w DirectX'ie czy w OpenGL'u. Rozdzielczosc i takie tam.
+        //Jak plik Ogre.cfg istnieje i mozna go odczytac to odpala konfigi z niego jak nie to opdala dialogboxa z opcjami konfiguracji.
         if (!mRoot->restoreConfig() && !mRoot->showConfigDialog())
             throw Exception(52, "User canceled the config dialog!", "Application::setupRenderSystem()");//Jak waszystko sie posypie to wywala blad :P.
     }
@@ -89,8 +89,9 @@ void GameEngine::createRenderWindow()
     }
 
 void GameEngine::setupCamera()
+void GameEngine::setupCamera()
 {
-    //Tworzy kamere. U¿ywamy tylko jednej kamery. Prze³aczamy ja viewpointami.
+    //Tworzy kamere. Uzywamy tylko jednej kamery. Przelaczamy ja viewpointami.
     mCamera = mSceneMgr->createCamera("Camera");
     //Node do kamery. Nim obracasz kamere. Nie rob tego tylko ciagnij zawsze za vp.
     mCamNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("CamNode");
@@ -100,11 +101,11 @@ void GameEngine::setupCamera()
     mCamNode->setPosition(Ogre::Vector3(0,0,80));
     //Kamera patrzy na PUNKT 0,0,0 GLOBAL.
     mCamera->lookAt(Ogre::Vector3(0,0,0));
-    //Ustawia kiedy obiekt ma staæ siê niewidzialny bo kamera jest za daleko lub zablisko.
+    //Ustawia kiedy obiekt ma stac sie niewidzialny bo kamera jest za daleko lub zablisko.
     mCamera->setNearClipDistance(5);
-    //tworzenie punktu widokowego. Mo¿e byæ ich kilka.
+    //tworzenie punktu widokowego. Moze byc ich kilka.
     Viewport* vp = mWindow->addViewport(mCamera);
-    //ustawia kolor t³a jeszcze przed renderem sceny.
+    //ustawia kolor tla jeszcze przed renderem sceny.
     vp->setBackgroundColour(ColourValue(0,0,0));
     //Dostosowuje kamere do rodzaju ekranu (4:3, 16:9, 16:10). Troche matmy :D.
     mCamera->setAspectRatio(Real(vp->getActualHeight()) / Real(vp->getActualHeight()));
@@ -112,12 +113,12 @@ void GameEngine::setupCamera()
 
     void GameEngine::setupInputSystem()
     {
-        //Obsluga klawiatury i myszki. Bedziemy u¿ywaæ bibliotek OIS, ale to innym razem.
+        //Obsluga klawiatury i myszki. Bedziemy uzywac bibliotek OIS, ale to innym razem.
     }
 
     void GameEngine::createFrameListener()
     {
-        //Tu deklaruje sie Listenery, to takie watki dla g³ownego loopa grafiki. Przykladay pokarze ci potem.
+        //Tu deklaruje sie Listenery, to takie watki dla glownego loopa grafiki. Przykladay pokarze ci potem.
         MainListener* mMainListener = new MainListener();
         mRoot->addFrameListener(mMainListener);
     }
@@ -129,7 +130,7 @@ void GameEngine::setupCamera()
 
 void GameEngine::defineResources()
 {
-    //Napisalem to funkcje juz downo temu (chyba ja, ale nie jestem pewien na 100% :D). Odczytuje ona z pliku resources.cfg co ma zaladowaæ silnik. O szczegoly wypataj mnie.
+    //Napisalem to funkcje juz downo temu (chyba ja, ale nie jestem pewien na 100% :D). Odczytuje ona z pliku resources.cfg co ma zaladowac silnik. O szczegoly wypataj mnie.
     String secName, typeName, archName;
     ConfigFile cf;
     cf.load("resources.cfg");
