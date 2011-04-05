@@ -48,4 +48,6 @@ private:
     static GameEngine* pinstance; // Singleton instance
 };
 
+#define sGameEngine GameEngine::getEngine()
+
 #endif
