@@ -12,6 +12,9 @@ protected:
     Root *mRoot; //G³ówny korzeñ silnika graficznego. Inicjalizacja nastêpuje w funkcji createRoot().
 public:
     SceneManager *mSceneMgr; //Menadzer sceny, to przez niego umieszczasz elmenty na scenie. Jest public, bo nie wiem jeszcze czy coœ tam nie bêdzie chcia³o sie do nigo odwo³aæ.
+	Camera* mCamera;
+	SceneNode* mCamNode;
+	Ogre::RenderWindow* mWindow;
 
     // Constructor
     GameEngine();
@@ -19,9 +22,8 @@ public:
     ~GameEngine();
 
     void defineResources();
-
+	void setupCamera();
     void Start();
-
     void createRoot()
     {
         mRoot = new Root(); //Tworzenie rdzenia, korzenia silnika graficznego.
@@ -38,7 +40,7 @@ public:
     void createRenderWindow()
     {
         //Tworzy okienko w WinApi.
-        mRoot->initialise(true, "Faith Engine"); // "Faith Engine" - to nazwa okna pod Win32.
+        mWindow = mRoot->initialise(true, "Faith Engine"); //"Faith Engine" - to nazwa okna pod Win32.
     }
 
     void initializeResourceGroups()
@@ -55,6 +57,19 @@ public:
     void setupScene()
     {
         mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "Default SceneManager"); //Inicjalizacja menadzera sceny.
+        mSceneMgr->setAmbientLight(ColourValue(0.5,0.5,0.5));
+                    /*      PRZYK£ADOWA SCENA   POCZ¥TEK    */
+        Ogre::Entity* e = mSceneMgr->createEntity("Ninja", "ninja.mesh");
+        SceneNode* n = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode");
+        n->attachObject(e);
+        n->setScale(Ogre::Vector3(0.1,0.1,0.1));
+        n->yaw(Ogre::Degree(180));
+        //Œwiat³o punktowe.
+        Light* l = mSceneMgr->createLight("Swiatlo");
+        //Pozycja œwiat³a.
+        l->setPosition(20,80,50);
+                    /*      PRZYK£ADOWA SCENA   KONIEC      */
+
     }
 
     void setupInputSystem()

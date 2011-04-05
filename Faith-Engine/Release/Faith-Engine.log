@@ -1,22 +1,30 @@
-﻿Build started 2011-04-04 21:34:52.
-     1>Project "X:\Faith-Engine\Faith-Engine\Faith-Engine.vcxproj" on node 2 (build target(s)).
+﻿Build started 2011-04-05 14:20:56.
+     1>Project "C:\Faith-Engine\Faith-Engine\Faith-Engine.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Creating "Release\Faith-Engine.unsuccessfulbuild" because "AlwaysCreate" was specified.
+         Touching "Release\Faith-Engine.unsuccessfulbuild".
        ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"C:\Ogre SDK 1.7.1\include\OGRE" /I"C:\Ogre SDK 1.7.1\boost_1_42\\" /I"X:\Faith-Engine\Faith-Engine" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /I"..\SDKs\Ogre SDK 1.7.1\include\OGRE" /I"..\SDKs\Ogre SDK 1.7.1\boost_1_42\\" /I"..\Faith-Engine" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt GameEngine.cpp main.cpp
+         GameEngine.cpp
+     1>C:\Faith-Engine\Faith-Engine\GameEngine.h(65): warning C4305: 'argument' : truncation from 'double' to 'const Ogre::Real'
+     1>C:\Faith-Engine\Faith-Engine\GameEngine.h(65): warning C4305: 'argument' : truncation from 'double' to 'const Ogre::Real'
+     1>C:\Faith-Engine\Faith-Engine\GameEngine.h(65): warning C4305: 'argument' : truncation from 'double' to 'const Ogre::Real'
          main.cpp
+     1>C:\Faith-Engine\Faith-Engine\GameEngine.h(65): warning C4305: 'argument' : truncation from 'double' to 'const Ogre::Real'
+     1>C:\Faith-Engine\Faith-Engine\GameEngine.h(65): warning C4305: 'argument' : truncation from 'double' to 'const Ogre::Real'
+     1>C:\Faith-Engine\Faith-Engine\GameEngine.h(65): warning C4305: 'argument' : truncation from 'double' to 'const Ogre::Real'
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"X:\Faith-Engine\Faith-Engine\Release\Faith-Engine.exe" /NOLOGO /LIBPATH:"C:\Ogre SDK 1.7.1\boost_1_42\lib" /LIBPATH:"C:\Ogre SDK 1.7.1\lib\release" OgreMain.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\Faith-Engine.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"X:\Faith-Engine\Faith-Engine\Release\Faith-Engine.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"X:\Faith-Engine\Faith-Engine\Release\Faith-Engine.lib" /MACHINE:X86 Release\main.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Faith-Engine\Faith-Engine\Release\Faith-Engine.exe" /NOLOGO /LIBPATH:"..\SDKs\Ogre SDK 1.7.1\boost_1_42\lib" /LIBPATH:"..\SDKs\Ogre SDK 1.7.1\lib\release" OgreMain.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\Faith-Engine.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Faith-Engine\Faith-Engine\Release\Faith-Engine.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Faith-Engine\Faith-Engine\Release\Faith-Engine.lib" /MACHINE:X86 Release\GameEngine.obj
+         Release\main.obj
          Generating code
          Finished generating code
-         Faith-Engine.vcxproj -> X:\Faith-Engine\Faith-Engine\Release\Faith-Engine.exe
+         Faith-Engine.vcxproj -> C:\Faith-Engine\Faith-Engine\Release\Faith-Engine.exe
        Manifest:
-         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"X:\Faith-Engine\Faith-Engine\Release\Faith-Engine.exe;#1" /manifest "Release\Faith-Engine.exe.intermediate.manifest"
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Faith-Engine\Faith-Engine\Release\Faith-Engine.exe;#1" /manifest "Release\Faith-Engine.exe.intermediate.manifest"
        FinalizeBuildStatus:
          Deleting file "Release\Faith-Engine.unsuccessfulbuild".
          Touching "Release\Faith-Engine.lastbuildstate".
-     1>Done Building Project "X:\Faith-Engine\Faith-Engine\Faith-Engine.vcxproj" (build target(s)).
+     1>Done Building Project "C:\Faith-Engine\Faith-Engine\Faith-Engine.vcxproj" (build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:11.66
+Time Elapsed 00:00:27.19

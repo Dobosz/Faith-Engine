@@ -26,9 +26,32 @@ void GameEngine::Start()
     initializeResourceGroups();
     setupGUI();
     setupScene();
+	setupCamera();
     setupInputSystem();
     createFrameListener();
     startRenderLoop();
+}
+
+void GameEngine::setupCamera()
+{
+	//Tworzy kamere. U¿ywamy tylko jednej kamery. Prze³aczamy ja viewpointami.
+	mCamera = mSceneMgr->createCamera("Camera");
+	//Node do kamery. Nim obracasz kamere. Nie rob tego tylko ciagnij zawsze za vp.
+	mCamNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("CamNode");
+	//przylaczanie kamery do noda
+	mCamNode->attachObject(mCamera);
+	//ustawienie kamery na pozycje 0,0,80 GLOBAL.
+	mCamNode->setPosition(Ogre::Vector3(0,0,80));
+	//Kamera patrzy na PUNKT 0,0,0 GLOBAL.
+	mCamera->lookAt(Ogre::Vector3(0,0,0));
+	//Ustawia kiedy obiekt ma staæ siê niewidzialny bo kamera jest za daleko lub zablisko.
+	mCamera->setNearClipDistance(5);
+	//tworzenie punktu widokowego. Mo¿e byæ ich kilka.
+	Viewport* vp = mWindow->addViewport(mCamera);
+	//ustawia kolor t³a jeszcze przed renderem sceny.
+	vp->setBackgroundColour(ColourValue(0,0,0));
+	//Dostosowuje kamere do rodzaju ekranu (4:3, 16:9, 16:10). Troche matmy :D.
+	mCamera->setAspectRatio(Real(vp->getActualHeight()) / Real(vp->getActualHeight()));
 }
 
 void GameEngine::defineResources()
