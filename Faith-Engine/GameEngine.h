@@ -42,6 +42,8 @@ public:
     void createFrameListener();
     void startRenderLoop();
 
+    //Function which are not call on startup.
+    SceneNode* addViewPoint();
 private:
     static GameEngine* pinstance; // Singleton instance
 };
