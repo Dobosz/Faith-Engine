@@ -7,11 +7,9 @@
 class Player : public Unit
 {
 public:
-    
-    // Constructor
-    Player();
-    // Destructor
-    ~Player();
+
+    explicit Player ();
+    ~Player ( );
 };
 
 #endif

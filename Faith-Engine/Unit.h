@@ -2,9 +2,11 @@
 #ifndef _Unit_H__
 #define _Unit_H__
 
+#include "WorldObject.h"
+
 //using namespace Ogre;
 
-class Unit
+class Unit : public WorldObject
 {
     protected:
         unsigned int m_health;
