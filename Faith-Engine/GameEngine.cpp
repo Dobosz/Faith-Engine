@@ -21,6 +21,7 @@ GameEngine::~GameEngine()
 
 // Signeton structure
 GameEngine* GameEngine::pinstance(0);
+
 GameEngine* GameEngine::getEngine ()
 {
     if (pinstance==0) // is it the first call?
@@ -30,7 +31,7 @@ GameEngine* GameEngine::getEngine ()
 }
 
 void GameEngine::Start()
-    {
+{
     //Ta Funkcja jest funkcja ktora odpala cala reszte rzeczy potrzebnych do stworzenia sceny Ogra.
     createRoot();
     defineResources();
@@ -43,11 +44,11 @@ void GameEngine::Start()
     setupInputSystem();
     createFrameListener();
     startRenderLoop();
-    }
+}
 
 void GameEngine::createRoot()
 {
-        mRoot = new Root(); //Tworzenie rdzenia, korzenia silnika graficznego.
+    mRoot = new Root(); //Tworzenie rdzenia, korzenia silnika graficznego.
 }
 
 void GameEngine::setupRenderSystem()
@@ -58,11 +59,11 @@ void GameEngine::setupRenderSystem()
         throw Exception(52, "User canceled the config dialog!", "Application::setupRenderSystem()");//Jak waszystko sie posypie to wywala blad :P.
 }
 
- void GameEngine::initializeResourceGroups()
- {
+void GameEngine::initializeResourceGroups()
+{
     TextureManager::getSingleton().setDefaultNumMipmaps(5); //Dotyczy techniki wyswietlania tekstur. Nie ruszeaj tego. Jak chcesz wiedziec wiecej to zapytaj, albo google.
     ResourceGroupManager::getSingleton().initialiseAllResourceGroups(); //Laduje wszystkie resoursy przeczytane z defineResources().
- }
+}
 
 void GameEngine::setupGUI()
 {
@@ -114,22 +115,22 @@ void GameEngine::setupCamera()
     mCamera->setAspectRatio(Real(vp->getActualHeight()) / Real(vp->getActualHeight()));
 }
 
-    void GameEngine::setupInputSystem()
-    {
-        //Obsluga klawiatury i myszki. Bedziemy uzywac bibliotek OIS, ale to innym razem.
-    }
+void GameEngine::setupInputSystem()
+{
+    //Obsluga klawiatury i myszki. Bedziemy uzywac bibliotek OIS, ale to innym razem.
+}
 
-    void GameEngine::createFrameListener()
-    {
-        //Tu deklaruje sie Listenery, to takie watki dla glownego loopa grafiki. Przykladay pokarze ci potem.
-        MainListener* mMainListener = new MainListener();
-        mRoot->addFrameListener(mMainListener);
-    }
+void GameEngine::createFrameListener()
+{
+    //Tu deklaruje sie Listenery, to takie watki dla glownego loopa grafiki. Przykladay pokarze ci potem.
+    MainListener* mMainListener = new MainListener();
+    mRoot->addFrameListener(mMainListener);
+}
 
-    void GameEngine::startRenderLoop()
-    {
-        mRoot->startRendering(); //Odpala glowna petle renderowania sceny.
-    }
+void GameEngine::startRenderLoop()
+{
+    mRoot->startRendering(); //Odpala glowna petle renderowania sceny.
+}
 
 void GameEngine::defineResources()
 {
@@ -149,4 +150,5 @@ void GameEngine::defineResources()
             archName = i->second;
             ResourceGroupManager::getSingleton().addResourceLocation(archName, typeName, secName);
         }
+    }
 }
