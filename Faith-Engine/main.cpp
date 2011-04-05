@@ -8,7 +8,6 @@
 *                                                       *
 *********************************************************/
 
-
 // Ogre main lib
 #include <Ogre.h>
 // adicional window lib (WinAPI), used for ShowMessage function.
@@ -17,6 +16,7 @@
 #include <GameEngine.h>
 // Nasza klasa samej gry. Nie zawiera mechaniki, ale loopa renderowania.
 using namespace Ogre;
+
 
 //Kod zaklada, ze jedziemy na WIN32. Podstawowa bledow i takie tam.
 #if OGRE_PLATFORM == PLATFORM_WIN32 || OGRE_PLATFORM == OGRE_PLATFORM_WIN32
@@ -29,7 +29,7 @@ using namespace Ogre;
     //Tworzy klase GameEngine
     try
     {
-        GameEngine * Engine = new GameEngine;
+        GameEngine* Engine = new GameEngine;
         Engine->Start();
     }
     catch(Exception& e) //Prosta obsluga bledow

@@ -1,23 +1,27 @@
-
 #include <GameEngine.h>
+#include <MainListener.h>
 
 GameEngine::GameEngine()
-{
+    {
     // Constructor, Initialize empty variables.
     mRoot = NULL;
-}
+    mWindow = NULL;
+    mCamera = NULL;
+    if (!Singleton)
+        GameEngine::Singleton = this;
+    }
 
 GameEngine::~GameEngine()
-{
+    {
     // Free memory and stuff
 
     // Do we need to remove mRoot ? GameEngine will be initialized only once so killing it means whole game close
     if (mRoot)
         delete mRoot;
-}
+    }
 
 void GameEngine::Start()
-{
+    {
     //Ta Funkcja jest funkcja ktora odpala cala reszte rzeczy potrzebnych do stworzenia sceny Ogra.
     createRoot();
     defineResources();
@@ -30,11 +34,16 @@ void GameEngine::Start()
     setupInputSystem();
     createFrameListener();
     startRenderLoop();
-}
+    }
 
 void GameEngine::createRoot()
     {
         mRoot = new Root(); //Tworzenie rdzenia, korzenia silnika graficznego.
+    }
+
+GameEngine* GameEngine::getSingleton()
+    {
+        return Singleton;
     }
 
 void GameEngine::setupRenderSystem()
@@ -109,6 +118,8 @@ void GameEngine::setupCamera()
     void GameEngine::createFrameListener()
     {
         //Tu deklaruje sie Listenery, to takie watki dla g³ownego loopa grafiki. Przykladay pokarze ci potem.
+        MainListener* mMainListener = new MainListener();
+        mRoot->addFrameListener(mMainListener);
     }
 
     void GameEngine::startRenderLoop()
