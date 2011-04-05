@@ -8,7 +8,6 @@ MainListener::MainListener(void)
         shutdown = false;
     }
 
-
 MainListener::~MainListener(void)
     {
         shutdown = true;
