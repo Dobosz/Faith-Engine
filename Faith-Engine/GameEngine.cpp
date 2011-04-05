@@ -3,14 +3,12 @@
 #include <MainListener.h>
 
 GameEngine::GameEngine()
-    {
+{
     // Constructor, Initialize empty variables.
     mRoot = NULL;
     mWindow = NULL;
     mCamera = NULL;
-    if (!Singleton)
-        GameEngine::Singleton = this;
-    }
+}
 
 GameEngine::~GameEngine()
 {
@@ -48,58 +46,52 @@ void GameEngine::Start()
     }
 
 void GameEngine::createRoot()
-    {
+{
         mRoot = new Root(); //Tworzenie rdzenia, korzenia silnika graficznego.
-    }
-
-GameEngine* GameEngine::getSingleton()
-    {
-        return Singleton;
-    }
+}
 
 void GameEngine::setupRenderSystem()
-    {
-        //Dobra to cos pozwala ci na wybor czy renderujesz obraz w DirectX'ie czy w OpenGL'u. Rozdzielczosc i takie tam.
-        //Jak plik Ogre.cfg istnieje i mozna go odczytac to odpala konfigi z niego jak nie to opdala dialogboxa z opcjami konfiguracji.
-        if (!mRoot->restoreConfig() && !mRoot->showConfigDialog())
-            throw Exception(52, "User canceled the config dialog!", "Application::setupRenderSystem()");//Jak waszystko sie posypie to wywala blad :P.
-    }
+{
+    //Dobra to cos pozwala ci na wybor czy renderujesz obraz w DirectX'ie czy w OpenGL'u. Rozdzielczosc i takie tam.
+    //Jak plik Ogre.cfg istnieje i mozna go odczytac to odpala konfigi z niego jak nie to opdala dialogboxa z opcjami konfiguracji.
+    if (!mRoot->restoreConfig() && !mRoot->showConfigDialog())
+        throw Exception(52, "User canceled the config dialog!", "Application::setupRenderSystem()");//Jak waszystko sie posypie to wywala blad :P.
+}
 
  void GameEngine::initializeResourceGroups()
-    {
-        TextureManager::getSingleton().setDefaultNumMipmaps(5); //Dotyczy techniki wyswietlania tekstur. Nie ruszeaj tego. Jak chcesz wiedziec wiecej to zapytaj, albo google.
-        ResourceGroupManager::getSingleton().initialiseAllResourceGroups(); //Laduje wszystkie resoursy przeczytane z defineResources().
-    }
+ {
+    TextureManager::getSingleton().setDefaultNumMipmaps(5); //Dotyczy techniki wyswietlania tekstur. Nie ruszeaj tego. Jak chcesz wiedziec wiecej to zapytaj, albo google.
+    ResourceGroupManager::getSingleton().initialiseAllResourceGroups(); //Laduje wszystkie resoursy przeczytane z defineResources().
+ }
 
-     void GameEngine::setupGUI()
-    {
-        //Na razie nie ma GUI ale bedzie trzeba zrobic implementacje jego w przyszlosci. Czytaj w specyfikacji.
-    }
+void GameEngine::setupGUI()
+{
+    //Na razie nie ma GUI ale bedzie trzeba zrobic implementacje jego w przyszlosci. Czytaj w specyfikacji.
+}
 
 void GameEngine::createRenderWindow()
-    {
-        //Tworzy okienko w WinApi.
-        mWindow = mRoot->initialise(true, "Faith Engine"); //"Faith Engine" - to nazwa okna pod Win32.
-    }
+{
+    //Tworzy okienko w WinApi.
+    mWindow = mRoot->initialise(true, "Faith Engine"); //"Faith Engine" - to nazwa okna pod Win32.
+}
 
-    void GameEngine::setupScene()
-    {
-        mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "Default SceneManager"); //Inicjalizacja menadzera sceny.
-        mSceneMgr->setAmbientLight(ColourValue(0.5,0.5,0.5));
-                    /*      PRZYKLADOWA SCENA   POCZATEK    */
-        Ogre::Entity* e = mSceneMgr->createEntity("Ninja", "ninja.mesh");
-        SceneNode* n = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode");
-        n->attachObject(e);
-        n->setScale(Ogre::Vector3(0.1,0.1,0.1));
-        n->yaw(Ogre::Degree(180));
-        //Swiatlo punktowe.
-        Light* l = mSceneMgr->createLight("Swiatlo");
-        //Pozycja swiatla.
-        l->setPosition(20,80,50);
-                    /*      PRZYKLADOWA SCENA   KONIEC      */
-    }
+void GameEngine::setupScene()
+{
+    mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "Default SceneManager"); //Inicjalizacja menadzera sceny.
+    mSceneMgr->setAmbientLight(ColourValue(0.5,0.5,0.5));
+        /*      PRZYKLADOWA SCENA   POCZATEK    */
+    Ogre::Entity* e = mSceneMgr->createEntity("Ninja", "ninja.mesh");
+    SceneNode* n = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode");
+    n->attachObject(e);
+    n->setScale(Ogre::Vector3(0.1,0.1,0.1));
+    n->yaw(Ogre::Degree(180));
+    //Swiatlo punktowe.
+    Light* l = mSceneMgr->createLight("Swiatlo");
+    //Pozycja swiatla.
+    l->setPosition(20,80,50);
+        /*      PRZYKLADOWA SCENA   KONIEC      */
+}
 
-void GameEngine::setupCamera()
 void GameEngine::setupCamera()
 {
     //Tworzy kamere. Uzywamy tylko jednej kamery. Przelaczamy ja viewpointami.
