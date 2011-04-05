@@ -1,3 +1,4 @@
+
 #ifndef _GameEngine_H__
 #define _GameEngine_H__
 
@@ -9,15 +10,7 @@ class GameEngine
 {
 protected:
     Root *mRoot; //Glowny korzen silnika graficznego. Inicjalizacja nastepuje w funkcji createRoot().
-public:
-    SceneManager *mSceneMgr; //Menadzer sceny, to przez niego umieszczasz elmenty na scenie. Jest public, bo nie wiem jeszcze czy cos tam nie bedzie chcialo sie do nigo odwolac.
-    Camera* mCamera;
-    SceneNode* mCamNode;
-    Ogre::RenderWindow* mWindow;
 
-    static GameEngine* getEngine();
-
-protected:
     // Constructor
     GameEngine();
     GameEngine(const GameEngine&);
@@ -26,6 +19,14 @@ protected:
     ~GameEngine();
 
 public:
+    SceneManager *mSceneMgr; //Menadzer sceny, to przez niego umieszczasz elmenty na scenie. Jest public, bo nie wiem jeszcze czy cos tam nie bedzie chcialo sie do nigo odwolac.
+    Camera* mCamera;
+    SceneNode* mCamNode;
+    Ogre::RenderWindow* mWindow;
+    
+    // Singleton
+    static GameEngine* getEngine();
+
     void defineResources();
     void setupCamera();
     void Start();
@@ -40,7 +41,7 @@ public:
     void startRenderLoop();
 
 private:
-    static GameEngine* pinstance;
+    static GameEngine* pinstance; // Singleton instance
 };
 
 #endif
