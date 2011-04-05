@@ -15,11 +15,17 @@ public:
     SceneNode* mCamNode;
     Ogre::RenderWindow* mWindow;
 
+    static GameEngine* getEngine();
+
+protected:
     // Constructor
     GameEngine();
+    GameEngine(const GameEngine&);
+    GameEngine& operator= (const GameEngine&);
     // Destructor
     ~GameEngine();
 
+public:
     void defineResources();
     void setupCamera();
     void Start();
@@ -32,6 +38,9 @@ public:
     void setupInputSystem();
     void createFrameListener();
     void startRenderLoop();
+
+private:
+    static GameEngine* pinstance;
 };
 
 #endif

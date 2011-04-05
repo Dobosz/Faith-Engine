@@ -29,8 +29,7 @@ using namespace Ogre;
     //Tworzy klase GameEngine
     try
     {
-        GameEngine * Engine = new GameEngine;
-        Engine->Start();
+        GameEngine::getEngine()->Start();
     }
     catch(Exception& e) //Prosta obsluga bledow
     {

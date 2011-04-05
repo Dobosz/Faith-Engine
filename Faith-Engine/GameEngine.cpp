@@ -15,6 +15,16 @@ GameEngine::~GameEngine()
         delete mRoot;
 }
 
+GameEngine* GameEngine::pinstance(0);
+
+GameEngine* GameEngine::getEngine ()
+{
+    if (pinstance==0) // is it the first call?
+        pinstance = new GameEngine();
+
+    return pinstance;
+}
+
 void GameEngine::Start()
 {
     //Ta Funkcja jest funkcja ktora odpala cala reszte rzeczy potrzebnych do stworzenia sceny Ogra.
