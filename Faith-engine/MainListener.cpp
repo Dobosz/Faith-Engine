@@ -16,8 +16,8 @@ MainListener::~MainListener(void)
 
 bool MainListener::frameStarted(const FrameEvent& evt)
     {
-        GameEngine::getEngine()->mCamNode->roll(Ogre::Degree(evt.timeSinceLastFrame*15)); //You can sey the "15" is a kind of speed. Its crushal to do actions according to timeSinceLastFrame.
-        if(GameEngine::getEngine()->mWindow->isClosed())
+        sGameEngine->mCamNode->roll(Ogre::Degree(evt.timeSinceLastFrame*15)); //You can sey the "15" is a kind of speed. Its crushal to do actions according to timeSinceLastFrame.
+        if(sGameEngine->mWindow->isClosed())
             shutdown = true;
         return !shutdown;
     }
