@@ -26,7 +26,7 @@ GameEngine* GameEngine::pinstance(0);
 
 GameEngine* GameEngine::getEngine()
 {
-    return (pinstance != NULL ? pinstance : new GameEngine());
+    return (pinstance != NULL ? pinstance : (pinstance =new GameEngine()));
 }
 
 void GameEngine::Start()
