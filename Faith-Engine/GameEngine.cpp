@@ -135,39 +135,7 @@ void GameEngine::startRenderLoop()
     mRoot->startRendering(); //Odpala glowna petle renderowania sceny.
 }
 
-<<<<<<< .mineSceneNode* GameEngine::addViewPort(Ogre::Vector3 move)
-{
-    return addViewPort(move, Ogre::Vector3(0,0,0), ColourValue(0,0,0));
-}
-
-=======>>>>>>> .theirsSceneNode* GameEngine::addViewPort(Ogre::Vector3 move, ColourValue color)
-{
-<<<<<<< .mine    return addViewPort(move, Ogre::Vector3(0,0,0), color);
-=======    Viewport* vp = sGameEngine->mWindow->addViewport(sGameEngine->mCamera);
-    vp->setBackgroundColour(color);
-    SceneNode * vpNode = sGameEngine->mSceneMgr->getRootSceneNode()->createChildSceneNode();
-    vpNode->translate(move, Node::TS_WORLD);
-    vpNode->lookAt(look, Node::TS_WORLD, Vector3::NEGATIVE_UNIT_Y);
-    return vpNode;
->>>>>>> .theirs}
-
-<<<<<<< .mineSceneNode* GameEngine::addViewPort(Ogre::Vector3 move, Ogre::Vector3 look)
-{
-    return addViewPort(move, look, ColourValue(0,0,0));
-}
-
-SceneNode* GameEngine::addViewPort(Ogre::Vector3 move, Ogre::Vector3 look, ColourValue color)
-{
-    Viewport* vp = GameEngine::getEngine()->mWindow->addViewport(GameEngine::getEngine()->mCamera,ZOrderVP);
-    vp->setBackgroundColour(color);
-    SceneNode * vpNode = GameEngine::getEngine()->mSceneMgr->getRootSceneNode()->createChildSceneNode();
-    vpNode->translate(move, Node::TS_WORLD);
-    vpNode->lookAt(look, Node::TS_WORLD, Vector3::NEGATIVE_UNIT_Y);
-    ZOrderVP++;
-    return vpNode;
-}
-
-=======>>>>>>> .theirsvoid GameEngine::defineResources()
+void GameEngine::defineResources()
 {
     //Napisalem to funkcje juz downo temu (chyba ja, ale nie jestem pewien na 100% :D). Odczytuje ona z pliku resources.cfg co ma zaladowac silnik. O szczegoly wypataj mnie.
     String secName, typeName, archName;
