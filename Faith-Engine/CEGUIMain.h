@@ -1,33 +1,21 @@
+
+#ifndef _CEGUIMain_H__
+#define _CEGUIMain_H__
+
 #include <CEGUI.h>
 #include <RendererModules/Ogre/CEGUIOgreRenderer.h>
 
-using namespace CEGUI;
-
-#pragma once
 class CEGUIMain
 {
 protected:
-	CEGUI::OgreRenderer* mRenderer;
+	OgreRenderer* mRenderer;
 public:
-	CEGUIMain(void)
-	{
-	}
+	CEGUIMain(void);
 
-	~CEGUIMain(void)
-	{
-	}
-void initialize()
-{
-	mRenderer = &CEGUI::OgreRenderer::bootstrapSystem();
-	CEGUI::Imageset::setDefaultResourceGroup("Imagesets");
-	CEGUI::Font::setDefaultResourceGroup("Fonts");
-	CEGUI::Scheme::setDefaultResourceGroup("Schemes");
-	CEGUI::WidgetLookManager::setDefaultResourceGroup("LookNFeel");
-	CEGUI::WindowManager::setDefaultResourceGroup("Layouts");
-	CEGUI::SchemeManager::getSingleton().create("WindowsLook.scheme");
-	CEGUI::System::getSingleton().setDefaultMouseCursor("WindowsLook", "MouseArrow");
-	CEGUI::MouseCursor::getSingleton().setImage( CEGUI::System::getSingleton().getDefaultMouseCursor());
-}
+	~CEGUIMain(void);
+
+void initialize();
+
 static CEGUI::MouseButton convertButton(OIS::MouseButtonID buttonID)
 {
     switch (buttonID)
@@ -47,3 +35,4 @@ static CEGUI::MouseButton convertButton(OIS::MouseButtonID buttonID)
 }
 };
 
+#endif
