@@ -43,6 +43,7 @@ void GameEngine::Start()
     setupGUI();
     setupScene();
     setupCamera();
+    Scene();
     setupInputSystem();
     createFrameListener();
     startRenderLoop();
@@ -82,15 +83,6 @@ void GameEngine::setupScene()
 {
     mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "Default SceneManager"); //Inicjalizacja menadzera sceny.
     mSceneMgr->setAmbientLight(ColourValue(0.5,0.5,0.5));
-        /*      PRZYKLADOWA SCENA   POCZATEK    */
-    SceneNode* n = addObject(Vector3(0,0,0),"ninja");
-    n->setScale(Ogre::Vector3(0.1,0.1,0.1));
-    n->yaw(Ogre::Degree(180));
-    //Swiatlo punktowe.
-    Light* l = mSceneMgr->createLight("Swiatlo");
-    //Pozycja swiatla.
-    l->setPosition(20,80,50);
-        /*      PRZYKLADOWA SCENA   KONIEC      */
 }
 
 void GameEngine::setupCamera()
@@ -113,8 +105,18 @@ void GameEngine::setupCamera()
     vp->setBackgroundColour(ColourValue(0,0,0));
     //Dostosowuje kamere do rodzaju ekranu (4:3, 16:9, 16:10). Troche matmy :D.
     mCamera->setAspectRatio(Real(vp->getActualWidth()) / Real(vp->getActualHeight()));
-
+}
+void GameEngine::Scene()
+{
+        /*      PRZYKLADOWA SCENA   POCZATEK    */
+    SceneNode* n = addObject(Vector3(0,0,0),"ogrehead", Vector3(0.2,0.2,0.2));
+    n->yaw(Ogre::Degree(0));
+    //Swiatlo punktowe.
     CamJump(addView(Vector3(100,100,100)));
+    Light* l = mSceneMgr->createLight("Swiatlo");
+    //Pozycja swiatla.
+    l->setPosition(20,80,50);
+        /*      PRZYKLADOWA SCENA   KONIEC      */
 }
 
 void GameEngine::setupInputSystem()
@@ -150,14 +152,13 @@ void GameEngine::CamJump(SceneNode* view)
     mCamNode->attachObject(mCamera);
 }
 
-SceneNode * GameEngine::addObject(Vector3 pos, Ogre::String name)
+SceneNode * GameEngine::addObject(Vector3 pos, Ogre::String name, Vector3 scale)
 {
     Ogre::Entity* e = mSceneMgr->createEntity(name, name+".mesh");
     SceneNode* n = mSceneMgr->getRootSceneNode()->createChildSceneNode(name+"Node");
     n->attachObject(e);
     n->setPosition(pos);
-    //n->setScale(Ogre::Vector3(0.1,0.1,0.1));
-    //n->yaw(Ogre::Degree(180));
+    n->setScale(scale);
     return n;
 }
 
