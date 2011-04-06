@@ -58,6 +58,7 @@
       <AdditionalIncludeDirectories>..\SDKs\Ogre SDK 1.7.1\include\OIS;..\SDKs\Ogre SDK 1.7.1\include\OGRE;..\SDKs\Ogre SDK 1.7.1\boost_1_42\;..\Faith-Engine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <OpenMPSupport>true</OpenMPSupport>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;SECURE_SCL=0</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
