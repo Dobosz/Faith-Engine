@@ -1,8 +1,5 @@
 
 #include <OISFramelistener.h>
-#include<Ogre.h>
-#include<../include/OIS/OIS.h>
-#include<CEGUIMain.h>
 
     OISFramelistener::OISFramelistener(Ogre::RenderWindow* Window, OIS::Keyboard* Keyboard, OIS::Mouse* Mouse)
     {

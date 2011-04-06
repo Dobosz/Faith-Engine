@@ -2,8 +2,8 @@
 #ifndef _GameEngine_H__
 #define _GameEngine_H__
 
-#include <Ogre.h>
 #include <MainListener.h>
+#include <OISMain.h>
 
 using namespace Ogre;
 
@@ -25,6 +25,7 @@ public:
     SceneNode* mCamNode;
     RenderWindow* mWindow;
     MainListener* mMainListener;
+    OISMain* OIS;
     // Singleton
     static GameEngine* getEngine();
 

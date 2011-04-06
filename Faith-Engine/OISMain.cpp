@@ -3,6 +3,9 @@
 
 OISMain::OISMain(void)
 {
+    mKeyboard = NULL;
+    mMouse = NULL;
+    mInputManager = NULL;
 }
 
 OISMain::~OISMain(void)
@@ -21,6 +24,7 @@ void OISMain::Initialize(Ogre::RenderWindow* mWindow)
     windowHndStr << windowHnd;
     pl.insert(std::make_pair(std::string("WINDOW"), windowHndStr.str()));
     mInputManager = OIS::InputManager::createInputSystem( pl );
+
     mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject(OIS::OISKeyboard, true));
     mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject(OIS::OISMouse, true));
     windowResized(mWindow);

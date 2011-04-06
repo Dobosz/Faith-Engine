@@ -1,7 +1,6 @@
 
 #include <GameEngine.h>
-#include <MainListener.h>
-#include <CEGUIMain.h>
+
 
 GameEngine::GameEngine()
 {
@@ -25,7 +24,7 @@ GameEngine::~GameEngine()
 // Signeton structure
 GameEngine* GameEngine::pinstance(0);
 
-GameEngine* GameEngine::getEngine ()
+GameEngine* GameEngine::getEngine()
 {
     if (pinstance==0) // is it the first call?
         pinstance = new GameEngine();
@@ -124,6 +123,8 @@ void GameEngine::Scene()
 void GameEngine::setupInputSystem()
 {
     //Obsluga klawiatury i myszki. Bedziemy uzywac bibliotek OIS, ale to innym razem.
+    OIS = new OISMain();
+    OIS->Initialize(mWindow);
 }
 
 void GameEngine::createFrameListener()

@@ -4,14 +4,12 @@
 #include<../include/OIS/OIS.h>
 #include<Ogre.h>
 
-using namespace OIS;
-
 class OISMain
 {
 public:
-    InputManager* mInputManager;
-    Mouse*    mMouse;
-    Keyboard* mKeyboard;
+    OIS::InputManager* mInputManager;
+    OIS::Mouse*    mMouse;
+    OIS::Keyboard* mKeyboard;
 
     OISMain(void);
 
