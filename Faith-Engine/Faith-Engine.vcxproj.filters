@@ -32,5 +32,11 @@
     <ClInclude Include="MainListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="OISFramelistener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OISMain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
