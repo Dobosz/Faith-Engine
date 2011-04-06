@@ -40,11 +40,11 @@ void GameEngine::Start()
     setupRenderSystem();
     createRenderWindow();
     initializeResourceGroups();
+    setupInputSystem();
     setupGUI();
     setupScene();
     setupCamera();
     Scene();
-    setupInputSystem();
     createFrameListener();
     startRenderLoop();
 }
