@@ -72,7 +72,7 @@ void GameEngine::initializeResourceGroups()
 void GameEngine::setupGUI()
 {
     //Na razie nie ma GUI ale bedzie trzeba zrobic implementacje jego w przyszlosci. Czytaj w specyfikacji.
-    CEGUIMain::initialize();
+//    CEGUIMain::initialize();
 }
 
 void GameEngine::createRenderWindow()

@@ -11,11 +11,11 @@ class OgreRenderer;
 class CEGUIMain
 {
 protected:
-	CEGUI::OgreRenderer* mRenderer;
+    CEGUI::OgreRenderer* mRenderer;
 public:
-	CEGUIMain(void);
+    CEGUIMain(void);
 
-	~CEGUIMain(void);
+    ~CEGUIMain(void);
 
 void initialize();
 
