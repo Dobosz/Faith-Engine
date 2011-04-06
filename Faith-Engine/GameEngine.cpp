@@ -8,7 +8,6 @@ GameEngine::GameEngine()
     mRoot = NULL;
     mWindow = NULL;
     mCamera = NULL;
-    ZOrderVP = 1;
 }
 
 GameEngine::~GameEngine()
@@ -115,7 +114,9 @@ void GameEngine::setupCamera()
     //ustawia kolor tla jeszcze przed renderem sceny.
     vp->setBackgroundColour(ColourValue(0,0,0));
     //Dostosowuje kamere do rodzaju ekranu (4:3, 16:9, 16:10). Troche matmy :D.
-    mCamera->setAspectRatio(Real(vp->getActualHeight()) / Real(vp->getActualHeight()));
+    mCamera->setAspectRatio(Real(vp->getActualWidth()) / Real(vp->getActualHeight()));
+
+    CamJump(addView(Vector3(100,100,100)));
 }
 
 void GameEngine::setupInputSystem()
@@ -133,6 +134,22 @@ void GameEngine::createFrameListener()
 void GameEngine::startRenderLoop()
 {
     mRoot->startRendering(); //Odpala glowna petle renderowania sceny.
+}
+
+SceneNode * GameEngine::addView(Vector3 pos, Vector3 look)
+{
+    Ogre::SceneNode * vNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+    vNode->setPosition(pos);
+    vNode->lookAt(look, Node::TS_WORLD);
+    return vNode;
+}
+
+void GameEngine::CamJump(SceneNode* view)
+{
+    mCamera->detachFromParent();
+    mCamNode = view;
+    mCamera->detachFromParent();
+    mCamNode->attachObject(mCamera);
 }
 
 void GameEngine::defineResources()
