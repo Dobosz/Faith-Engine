@@ -43,9 +43,9 @@ void GameEngine::Start()
     setupInputSystem();
     setupScene();
     setupCamera();
-    setupGUI();
     Scene();
     createFrameListener();
+    setupGUI();
     startRenderLoop();
 }
 
@@ -71,6 +71,7 @@ void GameEngine::initializeResourceGroups()
 void GameEngine::setupGUI()
 {
     //Na razie nie ma GUI ale bedzie trzeba zrobic implementacje jego w przyszlosci. Czytaj w specyfikacji.
+    GUI = new CEGUIMain();
     GUI->initialize();
 }
 
