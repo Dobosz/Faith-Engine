@@ -43,7 +43,7 @@ public:
     void startRenderLoop();
 
     //Function which are not call on startup.
-    SceneNode* addViewPoint();
+    SceneNode* addViewPoint(Ogre::Vector3 move, Ogre::Vector3 = Ogre::Vector3(0,0,0), ColourValue = ColourValue(0,0,0));
 private:
     static GameEngine* pinstance; // Singleton instance
 };
