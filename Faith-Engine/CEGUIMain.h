@@ -3,12 +3,15 @@
 #define _CEGUIMain_H__
 
 #include <CEGUI.h>
+#include<../include/OIS/OIS.h>
 #include <RendererModules/Ogre/CEGUIOgreRenderer.h>
+
+class OgreRenderer;
 
 class CEGUIMain
 {
 protected:
-	OgreRenderer* mRenderer;
+	CEGUI::OgreRenderer* mRenderer;
 public:
 	CEGUIMain(void);
 

@@ -1,7 +1,4 @@
 
-#ifndef _CEGUIMain_H__
-#define _CEGUIMain_H__
-
 #include <CEGUIMain.h>
 
 CEGUIMain::CEGUIMain(void)

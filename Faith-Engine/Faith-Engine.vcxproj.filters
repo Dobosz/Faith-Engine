@@ -24,6 +24,15 @@
     <ClCompile Include="MainListener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CEGUIMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OISFramelistener.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OISMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h">
