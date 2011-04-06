@@ -41,11 +41,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\SDKs\Ogre SDK 1.7.1\boost_1_42\;..\Faith-Engine;..\SDKs\Ogre SDK 1.7.1\include\OGRE;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\SDKs\Ogre SDK 1.7.1\boost_1_42\;..\Faith-Engine;..\SDKs\Ogre SDK 1.7.1\include\OGRE;..\SDKs\CEGUI SDK 0.7.4\cegui\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\SDKs\Ogre SDK 1.7.1\boost_1_42\lib;..\SDKs\Ogre SDK 1.7.1\lib\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\SDKs\Ogre SDK 1.7.1\boost_1_42\lib;..\SDKs\Ogre SDK 1.7.1\lib\release;..\SDKs\CEGUI SDK 0.7.4\cegui\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>OgreMain.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
