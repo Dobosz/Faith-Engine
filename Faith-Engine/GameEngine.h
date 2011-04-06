@@ -4,6 +4,7 @@
 
 #include <MainListener.h>
 #include <OISMain.h>
+#include <CEGUIMain.h>
 
 using namespace Ogre;
 
@@ -26,6 +27,7 @@ public:
     RenderWindow* mWindow;
     MainListener* mMainListener;
     OISMain* OIS;
+    CEGUIMain* GUI;
     // Singleton
     static GameEngine* getEngine();
 
