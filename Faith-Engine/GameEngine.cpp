@@ -83,9 +83,7 @@ void GameEngine::setupScene()
     mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "Default SceneManager"); //Inicjalizacja menadzera sceny.
     mSceneMgr->setAmbientLight(ColourValue(0.5,0.5,0.5));
         /*      PRZYKLADOWA SCENA   POCZATEK    */
-    Ogre::Entity* e = mSceneMgr->createEntity("Ninja", "ninja.mesh");
-    SceneNode* n = mSceneMgr->getRootSceneNode()->createChildSceneNode("HeadNode");
-    n->attachObject(e);
+    SceneNode* n = addObject(Vector3(0,0,0),"ninja");
     n->setScale(Ogre::Vector3(0.1,0.1,0.1));
     n->yaw(Ogre::Degree(180));
     //Swiatlo punktowe.
@@ -150,6 +148,17 @@ void GameEngine::CamJump(SceneNode* view)
     mCamNode = view;
     mCamera->detachFromParent();
     mCamNode->attachObject(mCamera);
+}
+
+SceneNode * GameEngine::addObject(Vector3 pos, Ogre::String name)
+{
+    Ogre::Entity* e = mSceneMgr->createEntity(name, name+".mesh");
+    SceneNode* n = mSceneMgr->getRootSceneNode()->createChildSceneNode(name+"Node");
+    n->attachObject(e);
+    n->setPosition(pos);
+    //n->setScale(Ogre::Vector3(0.1,0.1,0.1));
+    //n->yaw(Ogre::Degree(180));
+    return n;
 }
 
 void GameEngine::defineResources()

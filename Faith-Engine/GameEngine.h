@@ -42,8 +42,9 @@ public:
     void startRenderLoop();
 
     //Function which are not call on startup.
-    SceneNode * addView(Vector3 pos, Vector3 look = Vector3(0,0,0));
+    SceneNode * addView(Vector3, Vector3 look = Vector3(0,0,0));
     void CamJump(SceneNode*);
+    SceneNode * addObject(Vector3, Ogre::String);
     static GameEngine* pinstance; // Singleton instance
 };
 
