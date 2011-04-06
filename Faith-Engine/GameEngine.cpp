@@ -26,10 +26,7 @@ GameEngine* GameEngine::pinstance(0);
 
 GameEngine* GameEngine::getEngine()
 {
-    if (pinstance==0) // is it the first call?
-        pinstance = new GameEngine();
-
-    return pinstance;
+    return (pinstance != NULL ? pinstance : new GameEngine());
 }
 
 void GameEngine::Start()
