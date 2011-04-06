@@ -1,7 +1,7 @@
 #ifndef _OISMain_H__
 #define _OISMain_H__
 
-#include<OIS.h>
+#include<../include/OIS/OIS.h>
 #include<Ogre.h>
 
 using namespace OIS;

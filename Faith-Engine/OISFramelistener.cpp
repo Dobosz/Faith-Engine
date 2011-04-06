@@ -1,6 +1,7 @@
 
+#include <OISFramelistener.h>
 #include<Ogre.h>
-#include<OIS.h>
+#include<../include/OIS/OIS.h>
 #include<CEGUIMain.h>
 
     OISFramelistener::OISFramelistener(Ogre::RenderWindow* Window, OIS::Keyboard* Keyboard, OIS::Mouse* Mouse)
@@ -14,10 +15,11 @@
         mMouse->setEventCallback(this);
     }
 
-    OISFramelistener::~OISFramelistener(void)
+    OISFramelistener::~OISFramelistener()
     {
     }
-    virtual bool OISFramelistener::frameRenderingQueued(const Ogre::FrameEvent& evt)
+
+    bool OISFramelistener::frameRenderingQueued(const Ogre::FrameEvent& evt)
     {
         mMouse->capture();
         mKeyboard->capture();
@@ -25,7 +27,7 @@
         return Shutdown;
     } 
 //-------------------------------------------------------------------------------------
-    virtual bool OISFramelistener::keyPressed( const OIS::KeyEvent &arg )
+    bool OISFramelistener::keyPressed( const OIS::KeyEvent &arg )
     {
 
         CEGUI::System &sys = CEGUI::System::getSingleton();
@@ -43,13 +45,13 @@
     return true;
     }
 //-------------------------------------------------------------------------------------
-    virtual bool OISFramelistener::keyReleased( const OIS::KeyEvent &arg )
+    bool OISFramelistener::keyReleased( const OIS::KeyEvent &arg )
     {
         CEGUI::System::getSingleton().injectKeyUp(arg.key);
         return true;
     }
 //-------------------------------------------------------------------------------------
-    virtual bool OISFramelistener::mouseMoved( const OIS::MouseEvent &arg )
+    bool OISFramelistener::mouseMoved( const OIS::MouseEvent &arg )
     {
         CEGUI::System &sys = CEGUI::System::getSingleton();
         sys.injectMouseMove(arg.state.X.rel, arg.state.Y.rel);
@@ -59,16 +61,14 @@
         return true;
     }
 //-------------------------------------------------------------------------------------
-    virtual bool OISFramelistener::mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
+    bool OISFramelistener::mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
     {
         CEGUI::System::getSingleton().injectMouseButtonDown(CEGUIMain::convertButton(id));
         return true;
     }
 //-------------------------------------------------------------------------------------
-    virtual bool OISFramelistener::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
+    bool OISFramelistener::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
     {
         CEGUI::System::getSingleton().injectMouseButtonUp(CEGUIMain::convertButton(id));
         return true;
     }
-};
-

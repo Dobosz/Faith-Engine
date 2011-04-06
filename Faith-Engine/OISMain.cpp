@@ -39,7 +39,7 @@ void OISMain::windowResized(Ogre::RenderWindow* rw)
 }
  
 //od³¹cza OIS od okienka. bardzo wa¿ne pod linuxem.
-virtual void OISMain::windowClosed(Ogre::RenderWindow* rw)
+void OISMain::windowClosed(Ogre::RenderWindow* rw)
 {
     if( mInputManager )
     {
