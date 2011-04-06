@@ -1,6 +1,7 @@
 
 #include <GameEngine.h>
 #include <MainListener.h>
+#include <CEGUIMain.h>
 
 GameEngine::GameEngine()
 {
@@ -71,6 +72,7 @@ void GameEngine::initializeResourceGroups()
 void GameEngine::setupGUI()
 {
     //Na razie nie ma GUI ale bedzie trzeba zrobic implementacje jego w przyszlosci. Czytaj w specyfikacji.
+    CEGUIMain::initialize();
 }
 
 void GameEngine::createRenderWindow()

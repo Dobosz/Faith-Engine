@@ -69,9 +69,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CEGUIMain.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainListener.cpp" />
+    <ClCompile Include="OISFramelistener.cpp" />
+    <ClCompile Include="OISMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CEGUIMain.h" />
