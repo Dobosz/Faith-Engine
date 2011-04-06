@@ -31,7 +31,7 @@ static CEGUI::MouseButton convertButton(OIS::MouseButtonID buttonID)
  
     case OIS::MB_Middle:
         return CEGUI::MiddleButton;
- 
+
     default:
         return CEGUI::LeftButton;
     }
