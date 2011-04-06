@@ -130,6 +130,9 @@ void GameEngine::createFrameListener()
     //Tu deklaruje sie Listenery, to takie watki dla glownego loopa grafiki. Przykladay pokarze ci potem.
     mMainListener = new MainListener();
     mRoot->addFrameListener(mMainListener);
+    mOISFramelistener = new OISFramelistener(mWindow, OIS->mKeyboard, OIS->mMouse);
+    mRoot->addFrameListener(mOISFramelistener);
+
 }
 
 void GameEngine::startRenderLoop()

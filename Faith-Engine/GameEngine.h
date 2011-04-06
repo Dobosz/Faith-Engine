@@ -5,6 +5,7 @@
 #include <MainListener.h>
 #include <OISMain.h>
 #include <CEGUIMain.h>
+#include <OISFramelistener.h>
 
 using namespace Ogre;
 
@@ -26,6 +27,7 @@ public:
     SceneNode* mCamNode;
     RenderWindow* mWindow;
     MainListener* mMainListener;
+    OISFramelistener* mOISFramelistener;
     OISMain* OIS;
     CEGUIMain* GUI;
     // Singleton
