@@ -25,7 +25,7 @@ public:
     SceneNode* mCamNode;
     RenderWindow* mWindow;
     MainListener* mMainListener;
-    
+    int ZOrderVP;
     // Singleton
     static GameEngine* getEngine();
 
@@ -43,7 +43,12 @@ public:
     void startRenderLoop();
 
     //Function which are not call on startup.
-    SceneNode* addViewPoint();
+
+    SceneNode* addViewPort(Ogre::Vector3);
+    SceneNode* addViewPort(Ogre::Vector3, ColourValue);
+    SceneNode* addViewPort(Ogre::Vector3, Ogre::Vector3);
+    SceneNode* addViewPort(Ogre::Vector3, Ogre::Vector3, ColourValue);
+
 private:
     static GameEngine* pinstance; // Singleton instance
 };

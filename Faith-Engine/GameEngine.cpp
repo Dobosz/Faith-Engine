@@ -8,6 +8,7 @@ GameEngine::GameEngine()
     mRoot = NULL;
     mWindow = NULL;
     mCamera = NULL;
+    ZOrderVP = 1;
 }
 
 GameEngine::~GameEngine()
@@ -134,33 +135,30 @@ void GameEngine::startRenderLoop()
     mRoot->startRendering(); //Odpala glowna petle renderowania sceny.
 }
 
-SceneNode addViewPoint(Ogre::Vector3 move)
+SceneNode* GameEngine::addViewPort(Ogre::Vector3 move)
 {
-    Viewport* vp = GameEngine::getEngine()->mWindow->addViewport(GameEngine::getEngine()->mCamera);
-    vp->setBackgroundColour(ColourValue(0,0,0));
-    SceneNode * vpNode = GameEngine::getEngine()->mSceneMgr->getRootSceneNode()->createChildSceneNode();
-    vpNode->translate(move, Node::TS_WORLD);
-    vpNode->lookAt(Ogre::Vector3(0,0,0), Node::TS_WORLD, Vector3::NEGATIVE_UNIT_Y);
+    return addViewPort(move, Ogre::Vector3(0,0,0), ColourValue(0,0,0));
 }
 
-SceneNode* addViewPoint(Ogre::Vector3 move, Ogre::Vector3 look, ColourValue color)
+SceneNode* GameEngine::addViewPort(Ogre::Vector3 move, ColourValue color)
 {
-    Viewport* vp = GameEngine::getEngine()->mWindow->addViewport(GameEngine::getEngine()->mCamera);
+    return addViewPort(move, Ogre::Vector3(0,0,0), color);
+}
+
+SceneNode* GameEngine::addViewPort(Ogre::Vector3 move, Ogre::Vector3 look)
+{
+    return addViewPort(move, look, ColourValue(0,0,0));
+}
+
+SceneNode* GameEngine::addViewPort(Ogre::Vector3 move, Ogre::Vector3 look, ColourValue color)
+{
+    Viewport* vp = GameEngine::getEngine()->mWindow->addViewport(GameEngine::getEngine()->mCamera,ZOrderVP);
     vp->setBackgroundColour(color);
     SceneNode * vpNode = GameEngine::getEngine()->mSceneMgr->getRootSceneNode()->createChildSceneNode();
     vpNode->translate(move, Node::TS_WORLD);
     vpNode->lookAt(look, Node::TS_WORLD, Vector3::NEGATIVE_UNIT_Y);
+    ZOrderVP++;
     return vpNode;
-}
-
-SceneNode addViewPoint(Ogre::Vector3 move, ColourValue color)
-{
-    addViewPoint(move, Ogre::Vector3(0,0,0), color);
-}
-
-SceneNode addViewPoint(Ogre::Vector3 move, Ogre::Vector3 look)
-{
-    addViewPoint(move, look, ColourValue(0,0,0));
 }
 
 void GameEngine::defineResources()
