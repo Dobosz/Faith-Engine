@@ -46,6 +46,16 @@ void GameEngine::Start()
     startRenderLoop();
 }
 
+Light * GameEngine::addLight(Vector3 pos, ColourValue color)
+{
+    Light * l = mSceneMgr->createLight();
+    l->setPosition(pos);
+    l->setCastShadows(true);
+    l->setDiffuseColour(color);
+    l->setSpecularColour(ColourValue(0.9,0.9,0.9));
+    return l;
+}
+
 void GameEngine::createRoot()
 {
     mRoot = new Root(); //Tworzenie rdzenia, korzenia silnika graficznego.
@@ -108,13 +118,10 @@ void GameEngine::setupCamera()
 void GameEngine::Scene()
 {
         /*      PRZYKLADOWA SCENA   POCZATEK    */
-    SceneNode* n = addObject(Vector3(0,0,0),"ogrehead", Vector3(0.2,0.2,0.2));
-    n->yaw(Ogre::Degree(0));
+    addObject(Vector3(0,0,0),"ogrehead", Vector3(0.7,0.7,0.7));
     //Swiatlo punktowe.
+    addLight(Vector3(20,80,50));
     CamJump(addView(Vector3(100,100,100)));
-    Light* l = mSceneMgr->createLight("Swiatlo");
-    //Pozycja swiatla.
-    l->setPosition(20,80,50);
         /*      PRZYKLADOWA SCENA   KONIEC      */
 }
 

@@ -51,6 +51,8 @@ public:
     SceneNode * addView(Vector3, Vector3 look = Vector3(0,0,0));
     void CamJump(SceneNode*);
     SceneNode * addObject(Vector3, Ogre::String, Vector3 scale = Vector3(1,1,1));
+    Light * addLight(Vector3, ColourValue color = ColourValue(1,1,1));
+
     static GameEngine* pinstance; // Singleton instance
 };
 
