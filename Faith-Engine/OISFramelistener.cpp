@@ -1,7 +1,6 @@
 
 #include <precompiled.h>
 #include <OISFramelistener.h>
-#include <GameEngine.h>
 
 OISFramelistener::OISFramelistener(Ogre::RenderWindow* Window, OIS::Keyboard* Keyboard, OIS::Mouse* Mouse)
 {
