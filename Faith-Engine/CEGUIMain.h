@@ -4,8 +4,6 @@
 
 #include <precompiled.h>
 
-class OgreRenderer;
-
 class CEGUIMain
 {
 protected:

@@ -8,8 +8,6 @@
 #include <CEGUIMain.h>
 #include <OISFramelistener.h>
 
-using namespace Ogre;
-
 class GameEngine
 {
 protected:

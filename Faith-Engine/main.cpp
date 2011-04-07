@@ -8,6 +8,7 @@
 *                                                       *
 *********************************************************/
 
+// Precompiled header - add this to every file (also any rarely edited includes add to that precompiled.h file)
 #include <precompiled.h>
 
 // Using Ogre class as namespace, linking to other class will be do manualy. Brat do std odnosisz sie np. "std::cout", za to do klasy Ogra odnosimy sie bezsposrednio.
