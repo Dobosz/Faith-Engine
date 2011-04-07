@@ -2,7 +2,6 @@
 #include <precompiled.h>
 #include <FreeCamOISListener.h>
 
-
 FreeCamOISListener::FreeCamOISListener(Ogre::RenderWindow* Window, OIS::Keyboard* Keyboard, OIS::Mouse* Mouse, Ogre::SceneNode* CamNode)
 {
     Shutdown = true;
@@ -33,13 +32,12 @@ bool FreeCamOISListener::frameRenderingQueued(const Ogre::FrameEvent& evt)
     mCamNode->translate(mDirection * evt.timeSinceLastFrame, Ogre::Node::TS_LOCAL);
     if (mWindow->isClosed()) return false;
         return Shutdown;
-    } 
+}
 //-------------------------------------------------------------------------------------
 bool FreeCamOISListener::keyPressed( const OIS::KeyEvent &arg )
 {
-    CEGUI::System &sys = CEGUI::System::getSingleton();
-    sys.injectKeyDown(arg.key);
-    sys.injectChar(arg.text);
+    sCEGUI().injectKeyDown(arg.key);
+    sCEGUI().injectChar(arg.text);
 
     switch(arg.key)
     {
@@ -79,11 +77,11 @@ bool FreeCamOISListener::keyPressed( const OIS::KeyEvent &arg )
     }
 
     return true;
-    }
+}
 //-------------------------------------------------------------------------------------
 bool FreeCamOISListener::keyReleased( const OIS::KeyEvent &arg )
 {
-    CEGUI::System::getSingleton().injectKeyUp(arg.key);
+    sCEGUI().injectKeyUp(arg.key);
 
     switch (arg.key)
     {
@@ -106,12 +104,12 @@ bool FreeCamOISListener::keyReleased( const OIS::KeyEvent &arg )
         case OIS::KC_D:
                mDirection.x = 0;
         break;
- 
+
         case OIS::KC_PGDOWN:
         case OIS::KC_E:
                 mDirection.y = 0;
         break;
- 
+
         case OIS::KC_PGUP:
         case OIS::KC_Q:
         case OIS::KC_SPACE:
@@ -125,7 +123,7 @@ bool FreeCamOISListener::keyReleased( const OIS::KeyEvent &arg )
 //-------------------------------------------------------------------------------------
 bool FreeCamOISListener::mouseMoved( const OIS::MouseEvent &arg )
 {
-    CEGUI::System &sys = CEGUI::System::getSingleton();
+    CEGUI::System &sys = sCEGUI();
     sys.injectMouseMove(arg.state.X.rel, arg.state.Y.rel);
     // Scroll wheel.
     if (arg.state.Z.rel)
@@ -138,21 +136,21 @@ bool FreeCamOISListener::mouseMoved( const OIS::MouseEvent &arg )
         CEGUI::MouseCursor::getSingleton().setImage("WindowsLook","MouseMoveCursor");
     }
     else
-        CEGUI::MouseCursor::getSingleton().setImage( CEGUI::System::getSingleton().getDefaultMouseCursor());
+        CEGUI::MouseCursor::getSingleton().setImage( sCEGUI().getDefaultMouseCursor());
 
     return true;
 }
 //-------------------------------------------------------------------------------------
 bool FreeCamOISListener::mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
 {
-    CEGUI::System::getSingleton().injectMouseButtonDown(CEGUIMain::convertButton(id));
+    sCEGUI().injectMouseButtonDown(CEGUIMain::convertButton(id));
 
     return true;
 }
 //-------------------------------------------------------------------------------------
 bool FreeCamOISListener::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
 {
-    CEGUI::System::getSingleton().injectMouseButtonUp(CEGUIMain::convertButton(id));
-    CEGUI::MouseCursor::getSingleton().setImage( CEGUI::System::getSingleton().getDefaultMouseCursor());
+    sCEGUI().injectMouseButtonUp(CEGUIMain::convertButton(id));
+    CEGUI::MouseCursor::getSingleton().setImage( sCEGUI().getDefaultMouseCursor());
     return true;
 }

@@ -27,9 +27,8 @@ bool OISFramelistener::frameRenderingQueued(const Ogre::FrameEvent& evt)
 //-------------------------------------------------------------------------------------
 bool OISFramelistener::keyPressed( const OIS::KeyEvent &arg )
 {
-    CEGUI::System &sys = CEGUI::System::getSingleton();
-    sys.injectKeyDown(arg.key);
-    sys.injectChar(arg.text);
+    sCEGUI().injectKeyDown(arg.key);
+    sCEGUI().injectChar(arg.text);
 
     switch (arg.key)
     {
@@ -42,28 +41,27 @@ bool OISFramelistener::keyPressed( const OIS::KeyEvent &arg )
 //-------------------------------------------------------------------------------------
 bool OISFramelistener::keyReleased( const OIS::KeyEvent &arg )
 {
-    CEGUI::System::getSingleton().injectKeyUp(arg.key);
+    sCEGUI().injectKeyUp(arg.key);
     return true;
 }
 //-------------------------------------------------------------------------------------
 bool OISFramelistener::mouseMoved( const OIS::MouseEvent &arg )
 {
-    CEGUI::System &sys = CEGUI::System::getSingleton();
-    sys.injectMouseMove(arg.state.X.rel, arg.state.Y.rel);
+    sCEGUI().injectMouseMove(arg.state.X.rel, arg.state.Y.rel);
     // Scroll wheel.
     if (arg.state.Z.rel)
-        sys.injectMouseWheelChange(arg.state.Z.rel / 120.0f);
+        sCEGUI().injectMouseWheelChange(arg.state.Z.rel / 120.0f);
     return true;
 }
 //-------------------------------------------------------------------------------------
 bool OISFramelistener::mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
 {
-    CEGUI::System::getSingleton().injectMouseButtonDown(CEGUIMain::convertButton(id));
+    sCEGUI().injectMouseButtonDown(CEGUIMain::convertButton(id));
     return true;
 }
 //-------------------------------------------------------------------------------------
 bool OISFramelistener::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
 {
-    CEGUI::System::getSingleton().injectMouseButtonUp(CEGUIMain::convertButton(id));
+    sCEGUI().injectMouseButtonUp(CEGUIMain::convertButton(id));
     return true;
 }

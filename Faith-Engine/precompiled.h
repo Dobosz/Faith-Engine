@@ -10,5 +10,8 @@
 #include <OIS.h> // Input System
 #include <CEGUI.h> // GUI lib
 #include <RendererModules/Ogre/CEGUIOgreRenderer.h> // Additional rendering for GUI
+
+// Accessor defines
 #define sGameEngine GameEngine::getEngine()
+#define sCEGUI CEGUI::System::getSingleton
 #endif
