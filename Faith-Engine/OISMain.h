@@ -1,8 +1,7 @@
 #ifndef _OISMain_H__
 #define _OISMain_H__
 
-#include<../include/OIS/OIS.h>
-#include<Ogre.h>
+#include <precompiled.h>
 
 class OISMain
 {

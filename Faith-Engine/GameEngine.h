@@ -2,6 +2,7 @@
 #ifndef _GameEngine_H__
 #define _GameEngine_H__
 
+#include <precompiled.h>
 #include <MainListener.h>
 #include <OISMain.h>
 #include <CEGUIMain.h>

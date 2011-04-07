@@ -1,4 +1,5 @@
 
+#include <precompiled.h>
 #include <OISMain.h>
 
 OISMain::OISMain(void)
@@ -41,7 +42,7 @@ void OISMain::windowResized(Ogre::RenderWindow* rw)
     ms.width = width;
     ms.height = height;
 }
- 
+
 //od³¹cza OIS od okienka. bardzo wa¿ne pod linuxem.
 void OISMain::windowClosed(Ogre::RenderWindow* rw)
 {
@@ -49,7 +50,7 @@ void OISMain::windowClosed(Ogre::RenderWindow* rw)
     {
         mInputManager->destroyInputObject( mMouse );
         mInputManager->destroyInputObject( mKeyboard );
- 
+
         OIS::InputManager::destroyInputSystem(mInputManager);
         mInputManager = 0;
     }

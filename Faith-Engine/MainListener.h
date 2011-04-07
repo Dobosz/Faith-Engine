@@ -1,7 +1,7 @@
 #ifndef _MainListener_H__
 #define _MainListener_H__
 
-#include <Ogre.h>
+#include <precompiled.h>
 
 using namespace Ogre;
 

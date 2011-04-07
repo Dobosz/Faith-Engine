@@ -1,4 +1,5 @@
 
+#include <precompiled.h>
 #include <CEGUIMain.h>
 
 CEGUIMain::CEGUIMain(void)
@@ -11,7 +12,6 @@ CEGUIMain::~CEGUIMain(void)
 
 void CEGUIMain::initialize()
 {
-
     mRenderer = &CEGUI::OgreRenderer::bootstrapSystem();
     CEGUI::Imageset::setDefaultResourceGroup("Imagesets");
     CEGUI::Font::setDefaultResourceGroup("Fonts");

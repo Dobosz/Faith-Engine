@@ -9,7 +9,7 @@
 *********************************************************/
 
 // Ogre main lib
-#include <Ogre.h>
+#include <precompiled.h>
 // adicional window lib (WinAPI), used for ShowMessage function.
 #include <windows.h>
 // Using Ogre class as namespace, linking to other class will be do manualy. Brat do std odnosisz sie np. "std::cout", za to do klasy Ogra odnosimy sie bezsposrednio.

@@ -1,6 +1,6 @@
 
+#include <precompiled.h>
 #include <GameEngine.h>
-
 
 GameEngine::GameEngine()
 {

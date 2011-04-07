@@ -2,9 +2,7 @@
 #ifndef _CEGUIMain_H__
 #define _CEGUIMain_H__
 
-#include <CEGUI.h>
-#include<../include/OIS/OIS.h>
-#include <RendererModules/Ogre/CEGUIOgreRenderer.h>
+#include <precompiled.h>
 
 class OgreRenderer;
 
