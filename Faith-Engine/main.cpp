@@ -23,9 +23,8 @@ using namespace Ogre;
     int main(int argc, char **argv) //ta funkcja main wykona sie jak nie jedziemy na WIN32, ale jedziemy.
 #endif
 {
-    //Tworzy klase GameEngine
     try
-    {
+    {   // Start Game Engine which initializes all other classes and whole rendering
         sGameEngine->Start();
     }
     catch(Exception& e) //Prosta obsluga bledow

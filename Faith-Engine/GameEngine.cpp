@@ -18,7 +18,11 @@ GameEngine::~GameEngine()
     if (mRoot)
         delete mRoot;
     //this will close the game on GameEngine delete.
-    delete mMainListener;
+    if (mMainListener)
+        delete mMainListener;
+
+    if (mOISFramelistener)
+        delete mOISFramelistener;
 }
 
 // Signeton structure
@@ -26,6 +30,7 @@ GameEngine* GameEngine::pinstance(0);
 
 GameEngine* GameEngine::getEngine()
 {
+    // Singleton, if not initialized yet, make new one and return.
     return (pinstance != NULL ? pinstance : (pinstance =new GameEngine()));
 }
 
