@@ -2,11 +2,11 @@
 #include <precompiled.h>
 #include <CEGUIMain.h>
 
-CEGUIMain::CEGUIMain(void)
+CEGUIMain::CEGUIMain()
 {
 }
 
-CEGUIMain::~CEGUIMain(void)
+CEGUIMain::~CEGUIMain()
 {
 }
 

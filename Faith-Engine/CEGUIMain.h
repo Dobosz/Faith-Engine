@@ -15,25 +15,25 @@ public:
 
     ~CEGUIMain(void);
 
-void initialize();
+    void initialize();
 
-static CEGUI::MouseButton convertButton(OIS::MouseButtonID buttonID)
-{
-    switch (buttonID)
+    static CEGUI::MouseButton convertButton(OIS::MouseButtonID buttonID)
     {
-    case OIS::MB_Left:
-        return CEGUI::LeftButton;
+        switch (buttonID)
+        {
+        case OIS::MB_Left:
+            return CEGUI::LeftButton;
  
-    case OIS::MB_Right:
-        return CEGUI::RightButton;
+        case OIS::MB_Right:
+            return CEGUI::RightButton;
  
-    case OIS::MB_Middle:
-        return CEGUI::MiddleButton;
+        case OIS::MB_Middle:
+            return CEGUI::MiddleButton;
 
-    default:
-        return CEGUI::LeftButton;
+        default:
+            return CEGUI::LeftButton;
+        }
     }
-}
 };
 
 #endif

@@ -5,12 +5,12 @@
 
 //Class MainListener inheriets from Oger::Listener. If function "frameStarted" or "frameEnded" returns false, Ogre will shutdown the process. That goes for every listener registret to the root.
 
-MainListener::MainListener(void)
+MainListener::MainListener()
 {
     shutdown = false;
 }
 
-MainListener::~MainListener(void)
+MainListener::~MainListener()
 {
     shutdown = true;
 }

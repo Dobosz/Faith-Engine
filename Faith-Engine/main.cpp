@@ -8,15 +8,12 @@
 *                                                       *
 *********************************************************/
 
-// Ogre main lib
 #include <precompiled.h>
-// adicional window lib (WinAPI), used for ShowMessage function.
-#include <windows.h>
+
 // Using Ogre class as namespace, linking to other class will be do manualy. Brat do std odnosisz sie np. "std::cout", za to do klasy Ogra odnosimy sie bezsposrednio.
 #include <GameEngine.h>
 // Nasza klasa samej gry. Nie zawiera mechaniki, ale loopa renderowania.
 using namespace Ogre;
-
 
 //Kod zaklada, ze jedziemy na WIN32. Podstawowa bledow i takie tam.
 #if OGRE_PLATFORM == PLATFORM_WIN32 || OGRE_PLATFORM == OGRE_PLATFORM_WIN32

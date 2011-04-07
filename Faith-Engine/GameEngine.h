@@ -23,6 +23,8 @@ protected:
     ~GameEngine();
 
 public:
+    // TODO: Move all classes to private part and make get functions...
+
     SceneManager *mSceneMgr; //Menadzer sceny, to przez niego umieszczasz elmenty na scenie. Jest public, bo nie wiem jeszcze czy cos tam nie bedzie chcialo sie do nigo odwolac.
     Camera* mCamera;
     SceneNode* mCamNode;
@@ -31,7 +33,7 @@ public:
     OISFramelistener* mOISFramelistener;
     OISMain* OIS;
     CEGUIMain* GUI;
-    // Singleton
+    // Singleton of GameEngine
     static GameEngine* getEngine();
 
     void defineResources();
