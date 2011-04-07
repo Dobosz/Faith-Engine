@@ -76,6 +76,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CEGUIMain.cpp" />
+    <ClCompile Include="FreeCamOISListener.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainListener.cpp" />
