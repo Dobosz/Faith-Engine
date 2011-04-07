@@ -16,7 +16,7 @@ OISMain::~OISMain()
 //inicjalizacja OIS.
 void OISMain::Initialize(Ogre::RenderWindow* mWindow)
 {
-    //Wpis do logów.
+    //Wpis do logow.
     Ogre::LogManager::getSingletonPtr()->logMessage("*** Initializing OIS ***");
     OIS::ParamList pl;
     size_t windowHnd = 0;
@@ -31,7 +31,7 @@ void OISMain::Initialize(Ogre::RenderWindow* mWindow)
     windowResized(mWindow);
 }
 
-//miejsce do klikania myszk¹.
+//miejsce do klikania myszka.
 void OISMain::windowResized(Ogre::RenderWindow* rw)
 {
     unsigned int width, height, depth;
@@ -43,7 +43,7 @@ void OISMain::windowResized(Ogre::RenderWindow* rw)
     ms.height = height;
 }
 
-//od³¹cza OIS od okienka. bardzo wa¿ne pod linuxem.
+//odlacza OIS od okienka. bardzo wazne pod linuxem.
 void OISMain::windowClosed(Ogre::RenderWindow* rw)
 {
     if (mInputManager)
@@ -55,4 +55,3 @@ void OISMain::windowClosed(Ogre::RenderWindow* rw)
         mInputManager = 0;
     }
 }
-
