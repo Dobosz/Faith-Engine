@@ -97,7 +97,7 @@ void GameEngine::setupScene()
 {
     mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "SceneManager"); //Inicjalizacja menadzera sceny.
     mSceneMgr->setAmbientLight(ColourValue(0.5,0.5,0.5)); //Global lighting
-    mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE); //Shadows
+    mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE); //Shadows
 }
 
 void GameEngine::setupCamera()
@@ -128,11 +128,11 @@ void GameEngine::Scene()
     //Swiatlo punktowe.
     addLight(Vector3(500,500,-500),ColourValue(0.0,0.7,0.7));
     addLight(Vector3(-0,500,500),ColourValue(0.2,0.2,0.9));
-    CamJump(addView(Vector3(300,150,200),Vector3(0,50,0)));
+    CamJump(addView(Vector3(80,80,80),Vector3(0,50,0)));
 
     Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
     Ogre::MeshManager::getSingleton().createPlane("ground", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
-        plane, 1500, 1500, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Z);
+        plane, 1500, 1500, 20, 20, true, 1, 12, 12, Ogre::Vector3::UNIT_Z);
     Ogre::Entity* entGround = mSceneMgr->createEntity("GroundEntity", "ground");
     mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entGround);
     entGround->setMaterialName("Examples/Rockwall");
