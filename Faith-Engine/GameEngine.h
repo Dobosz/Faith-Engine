@@ -7,6 +7,7 @@
 #include <OISMain.h>
 #include <CEGUIMain.h>
 #include <OISFramelistener.h>
+#include <FreeCamOISListener.h>
 
 class GameEngine
 {
@@ -29,6 +30,7 @@ public:
     RenderWindow* mWindow;
     MainListener* mMainListener;
     OISFramelistener* mOISFramelistener;
+    FreeCamOISListener* mFreeCamOISListener;
     OISMain* OIS;
     CEGUIMain* GUI;
     // Singleton of GameEngine

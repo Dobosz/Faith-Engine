@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CEGUIMain.h" />
+    <ClInclude Include="FreeCamOISListener.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="MainListener.h" />
     <ClInclude Include="OISFramelistener.h" />

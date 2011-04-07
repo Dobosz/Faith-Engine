@@ -128,7 +128,7 @@ void GameEngine::Scene()
     //Swiatlo punktowe.
     addLight(Vector3(500,500,-500),ColourValue(0.0,0.7,0.7));
     addLight(Vector3(-0,500,500),ColourValue(0.2,0.2,0.9));
-    CamJump(addView(Vector3(80,80,80),Vector3(0,50,0)));
+    CamJump(addView(Vector3(0,100,100),Vector3(0,50,0)));
 
     Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
     Ogre::MeshManager::getSingleton().createPlane("ground", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
@@ -154,6 +154,8 @@ void GameEngine::createFrameListener()
     mRoot->addFrameListener(mMainListener);
     mOISFramelistener = new OISFramelistener(mWindow, OIS->mKeyboard, OIS->mMouse);
     mRoot->addFrameListener(mOISFramelistener);
+    mFreeCamOISListener = new FreeCamOISListener(mWindow, OIS->mKeyboard, OIS->mMouse, mCamNode);
+    mRoot->addFrameListener(mFreeCamOISListener);
 
 }
 
