@@ -17,7 +17,7 @@ MainListener::~MainListener()
 
 bool MainListener::frameStarted(const FrameEvent& evt)
 {
-    sGameEngine->mCamNode->roll(Ogre::Degree(evt.timeSinceLastFrame*15)); //You can sey the "15" is a kind of speed. Its crushal to do actions according to timeSinceLastFrame.
+    //sGameEngine->mCamNode->rotate(Vector3(0,0,50), Ogre::Degree(evt.timeSinceLastFrame*2),Node::TS_WORLD); //You can sey the "15" is a kind of speed. Its crushal to do actions according to timeSinceLastFrame.
     if (sGameEngine->mWindow->isClosed())
         shutdown = true;
     return !shutdown;

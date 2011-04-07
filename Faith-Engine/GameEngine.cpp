@@ -95,8 +95,9 @@ void GameEngine::createRenderWindow()
 
 void GameEngine::setupScene()
 {
-    mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "Default SceneManager"); //Inicjalizacja menadzera sceny.
-    mSceneMgr->setAmbientLight(ColourValue(0.5,0.5,0.5));
+    mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "SceneManager"); //Inicjalizacja menadzera sceny.
+    mSceneMgr->setAmbientLight(ColourValue(0.5,0.5,0.5)); //Global lighting
+    mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_MODULATIVE); //Shadows
 }
 
 void GameEngine::setupCamera()
@@ -123,10 +124,19 @@ void GameEngine::setupCamera()
 void GameEngine::Scene()
 {
         /*      PRZYKLADOWA SCENA   POCZATEK    */
-    addObject(Vector3(0,0,0),"ogrehead", Vector3(0.7,0.7,0.7));
+    addObject(Vector3(0,40,0),"ogrehead", Vector3(0.3,0.3,0.3));
     //Swiatlo punktowe.
-    addLight(Vector3(20,80,50));
-    CamJump(addView(Vector3(100,100,100)));
+    addLight(Vector3(500,500,-500),ColourValue(0.0,0.7,0.7));
+    addLight(Vector3(-0,500,500),ColourValue(0.2,0.2,0.9));
+    CamJump(addView(Vector3(300,150,200),Vector3(0,50,0)));
+
+    Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
+    Ogre::MeshManager::getSingleton().createPlane("ground", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
+        plane, 1500, 1500, 20, 20, true, 1, 5, 5, Ogre::Vector3::UNIT_Z);
+    Ogre::Entity* entGround = mSceneMgr->createEntity("GroundEntity", "ground");
+    mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entGround);
+    entGround->setMaterialName("Examples/Rockwall");
+    entGround->setCastShadows(false);
         /*      PRZYKLADOWA SCENA   KONIEC      */
 }
 
@@ -171,6 +181,7 @@ void GameEngine::CamJump(SceneNode* view)
 SceneNode * GameEngine::addObject(Vector3 pos, Ogre::String name, Vector3 scale)
 {
     Ogre::Entity* e = mSceneMgr->createEntity(name, name+".mesh");
+    e->setCastShadows(true);
     SceneNode* n = mSceneMgr->getRootSceneNode()->createChildSceneNode(name+"Node");
     n->attachObject(e);
     n->setPosition(pos);
