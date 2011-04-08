@@ -151,9 +151,11 @@ void GameEngine::Scene()
     Ogre::Quaternion q2[]  = {Quaternion(48,68,50,0), Quaternion(60,0, 55,70), Quaternion(90,-68,90,86), Quaternion(-40,70,49, 80),};
     Ogre::Quaternion q3[]  = {Quaternion(86,-70,90,0), Quaternion(-90,0,-45,70), Quaternion(90,-70,40,68), Quaternion(-40,70,-49,86),};
 
-    RegisterAnimation(CreateBasicNodeAnim("Animation1", 4.0, object1, vec1, q1, 4));
-    RegisterAnimation(CreateBasicNodeAnim("Animation2", 4.0, object2, vec2, q2, 4));
-    RegisterAnimation(CreateBasicNodeAnim("Animation3", 4.0, object3, vec3, q3, 4));
+    RegisterAnimation(CreateBasicNodeAnim("Animation1", 4.0, object1, vec1, 4, q1));
+    RegisterAnimation(CreateBasicNodeAnim("Animation2", 4.0, object2, vec2, 4, q2));
+    RegisterAnimation(CreateBasicNodeAnim("Animation3", 4.0, object3, vec3, 4, q3));
+
+    //RegisterAnimation(CreateBasicNodeAnim("CamAnimation", 20.0, mCamNode, vec1, 4));
         /*      PRZYKLADOWA SCENA   KONIEC      */
 }
 
@@ -203,7 +205,7 @@ SceneNode * GameEngine::addObject(Vector3 pos, Ogre::String name, Ogre::String m
     return n;
 }
 
-AnimationState * GameEngine::CreateBasicNodeAnim(Ogre::String name, Ogre::Real duration, SceneNode * snode, Vector3 VectorArray[], Quaternion RotArray[], int NrKeyFrames, bool loop)
+AnimationState * GameEngine::CreateBasicNodeAnim(Ogre::String name, Ogre::Real duration, SceneNode * snode, Vector3 VectorArray[], int NrKeyFrames, Quaternion RotArray[], bool loop)
 {
     Animation* animation = mSceneMgr->createAnimation(name, duration);
     animation->setInterpolationMode(Animation::IM_LINEAR);

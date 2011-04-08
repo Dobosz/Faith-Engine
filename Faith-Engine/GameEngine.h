@@ -52,7 +52,7 @@ public:
     //Function which are not call on startup.
     void Scene();
     SceneNode * addView(Vector3, Vector3 look = Vector3(0,0,0));
-    AnimationState * CreateBasicNodeAnim(Ogre::String name, Ogre::Real duration, SceneNode * snode, Vector3 VectorArray[], Quaternion RotArray[] = new Ogre::Quaternion[], int NrKeyFrames = 0, bool loop = true);
+    AnimationState * CreateBasicNodeAnim(Ogre::String name, Ogre::Real duration, SceneNode * snode, Vector3 VectorArray[], int NrKeyFrames, Quaternion RotArray[] = new Ogre::Quaternion[], bool loop = true);
     void RegisterAnimation(AnimationState * animation);
     void CamJump(SceneNode*);
     SceneNode * addObject(Vector3, Ogre::String, Ogre::String, Vector3 scale = Vector3(1,1,1));
