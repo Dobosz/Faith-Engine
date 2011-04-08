@@ -126,11 +126,10 @@ void GameEngine::setupCamera()
 void GameEngine::Scene()
 {
         /*      PRZYKLADOWA SCENA   POCZATEK    */
-    SceneNode * object1 = addObject(Vector3(0,100,0),"ogrehead", Vector3(0.3,0.3,0.3));
     //Swiatlo punktowe.
     addLight(Vector3(500,500,-500),ColourValue(0.0,0.7,0.7));
     addLight(Vector3(-0,500,500),ColourValue(0.2,0.2,0.9));
-    CamJump(addView(Vector3(0,100,100),Vector3(0,50,0)));
+    CamJump(addView(Vector3(0,1000,1000),Vector3(0,50,0)));
 
     Ogre::Plane plane(Ogre::Vector3::UNIT_Y, 0);
     Ogre::MeshManager::getSingleton().createPlane("ground", Ogre::ResourceGroupManager::DEFAULT_RESOURCE_GROUP_NAME,
@@ -140,10 +139,21 @@ void GameEngine::Scene()
     entGround->setMaterialName("Examples/Rockwall");
     entGround->setCastShadows(false);
 
-    Vector3 vec[] = {Vector3(50,100,0), Vector3(0,100,50), Vector3(-50,100,0), Vector3(0,100,-50)};
-    Ogre::AnimationState * animationstate = CreateBasicNodeAnim("Animation", 4.0, object1, vec, 4,true);
-    Ogre::AnimationState animdebug = *animationstate;
-    RegisterAnimation(animationstate);
+    SceneNode * object1 = addObject(Vector3(0,0,0),"ogrehead1", "ogrehead", Vector3(0.3,0.3,0.3));
+    SceneNode * object2 = addObject(Vector3(0,0,0),"ogrehead2", "ogrehead", Vector3(0.4,0.4,0.4));
+    SceneNode * object3 = addObject(Vector3(0,0,0),"ogrehead3", "ogrehead", Vector3(0.2,0.2,0.2));
+
+    Vector3 vec1[] = {Vector3(200,464,464), Vector3(648,546,540), Vector3(-560,580,100), Vector3(-80,400,-568)};
+    Vector3 vec2[] = {Vector3(400,80,560), Vector3(0,80,50), Vector3(-200,560,400), Vector3(200,400,-50)};
+    Vector3 vec3[] = {Vector3(580,75,464), Vector3(0,464,50), Vector3(-580,464,0), Vector3(0,464, 0)};
+
+    Ogre::Quaternion q1[]  = {Quaternion(48,-68,49,0), Quaternion(-90,0,-45,80), Quaternion(90,-68,40,50), Quaternion(-40,49,-80,86),};
+    Ogre::Quaternion q2[]  = {Quaternion(48,68,50,0), Quaternion(60,0, 55,70), Quaternion(90,-68,90,86), Quaternion(-40,70,49, 80),};
+    Ogre::Quaternion q3[]  = {Quaternion(86,-70,90,0), Quaternion(-90,0,-45,70), Quaternion(90,-70,40,68), Quaternion(-40,70,-49,86),};
+
+    RegisterAnimation(CreateBasicNodeAnim("Animation1", 4.0, object1, vec1, q1, 4));
+    RegisterAnimation(CreateBasicNodeAnim("Animation2", 4.0, object2, vec2, q2, 4));
+    RegisterAnimation(CreateBasicNodeAnim("Animation3", 4.0, object3, vec3, q3, 4));
         /*      PRZYKLADOWA SCENA   KONIEC      */
 }
 
@@ -182,9 +192,9 @@ void GameEngine::CamJump(SceneNode* view)
     mCamNode->attachObject(mCamera);
 }
 
-SceneNode * GameEngine::addObject(Vector3 pos, Ogre::String name, Vector3 scale)
+SceneNode * GameEngine::addObject(Vector3 pos, Ogre::String name, Ogre::String mesh, Vector3 scale)
 {
-    Ogre::Entity* e = mSceneMgr->createEntity(name, name+".mesh");
+    Ogre::Entity* e = mSceneMgr->createEntity(name, mesh+".mesh");
     e->setCastShadows(true);
     SceneNode* n = mSceneMgr->getRootSceneNode()->createChildSceneNode(name+"Node");
     n->attachObject(e);
@@ -193,12 +203,12 @@ SceneNode * GameEngine::addObject(Vector3 pos, Ogre::String name, Vector3 scale)
     return n;
 }
 
-AnimationState * GameEngine::CreateBasicNodeAnim(Ogre::String name, Ogre::Real duration, SceneNode * snode, Vector3 VectorArray[], int NrKeyFrames, bool loop)
+AnimationState * GameEngine::CreateBasicNodeAnim(Ogre::String name, Ogre::Real duration, SceneNode * snode, Vector3 VectorArray[], Quaternion RotArray[], int NrKeyFrames, bool loop)
 {
     Animation* animation = mSceneMgr->createAnimation(name, duration);
     animation->setInterpolationMode(Animation::IM_LINEAR);
     NodeAnimationTrack* track = animation->createNodeTrack(0, snode);
-
+    track->setUseShortestRotationPath(true);
     Real step = duration/NrKeyFrames;
 
     TransformKeyFrame* key;
@@ -207,6 +217,7 @@ AnimationState * GameEngine::CreateBasicNodeAnim(Ogre::String name, Ogre::Real d
     {
     key = track->createNodeKeyFrame(step*i);
     key->setTranslate(VectorArray[i]);
+    key->setRotation(RotArray[i]);
     }
 
     AnimationState * NodeAnimationState = mSceneMgr->createAnimationState(name);
