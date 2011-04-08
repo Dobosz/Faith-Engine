@@ -43,11 +43,13 @@ void GameEngine::Start()
     createRenderWindow();
     initializeResourceGroups();
     setupInputSystem();
+    setupGUI();
     setupScene();
     setupCamera();
+    mMainListener = static_cast<MainListener *>(createFrameListener (new MainListener())); 
     Scene();
-    createFrameListener();
-    setupGUI();
+    mOISFramelistener = static_cast<OISFramelistener *>(createFrameListener (new OISFramelistener(mWindow, OIS->mKeyboard, OIS->mMouse)));
+    mFreeCamOISListener = static_cast<FreeCamOISListener *>(createFrameListener (new FreeCamOISListener(mWindow, OIS->mKeyboard, OIS->mMouse, mCamNode)));
     startRenderLoop();
 }
 
@@ -124,7 +126,7 @@ void GameEngine::setupCamera()
 void GameEngine::Scene()
 {
         /*      PRZYKLADOWA SCENA   POCZATEK    */
-    SceneNode * object1 = addObject(Vector3(0,40,0),"ogrehead", Vector3(0.3,0.3,0.3));
+    SceneNode * object1 = addObject(Vector3(0,100,0),"ogrehead", Vector3(0.3,0.3,0.3));
     //Swiatlo punktowe.
     addLight(Vector3(500,500,-500),ColourValue(0.0,0.7,0.7));
     addLight(Vector3(-0,500,500),ColourValue(0.2,0.2,0.9));
@@ -138,9 +140,9 @@ void GameEngine::Scene()
     entGround->setMaterialName("Examples/Rockwall");
     entGround->setCastShadows(false);
 
-    Vector3 vec[] = {Vector3(50,0,50), Vector3(-50,0,-50)};
-    //CreateBasicNodeAnim("HeadRotate", 4.0, object1, {Vector3(50,50,50),Vector3(-50,-50,-50)}, 2, true);
-    Ogre::AnimationState * animationstate = CreateBasicNodeAnim("Animation", 4.0, object1, vec, 1,true);
+    Vector3 vec[] = {Vector3(50,100,0), Vector3(0,100,50), Vector3(-50,100,0), Vector3(0,100,-50)};
+    Ogre::AnimationState * animationstate = CreateBasicNodeAnim("Animation", 4.0, object1, vec, 4,true);
+    Ogre::AnimationState animdebug = *animationstate;
     RegisterAnimation(animationstate);
         /*      PRZYKLADOWA SCENA   KONIEC      */
 }
@@ -152,16 +154,11 @@ void GameEngine::setupInputSystem()
     OIS->Initialize(mWindow);
 }
 
-void GameEngine::createFrameListener()
+FrameListener * GameEngine::createFrameListener(Ogre::FrameListener * FL)
 {
     //Tu deklaruje sie Listenery, to takie watki dla glownego loopa grafiki. Przykladay pokarze ci potem.
-    mMainListener = new MainListener();
-    mRoot->addFrameListener(mMainListener);
-    mOISFramelistener = new OISFramelistener(mWindow, OIS->mKeyboard, OIS->mMouse);
-    mRoot->addFrameListener(mOISFramelistener);
-    mFreeCamOISListener = new FreeCamOISListener(mWindow, OIS->mKeyboard, OIS->mMouse, mCamNode);
-    mRoot->addFrameListener(mFreeCamOISListener);
-
+    mRoot->addFrameListener(FL);
+    return FL;
 }
 
 void GameEngine::startRenderLoop()
@@ -199,10 +196,10 @@ SceneNode * GameEngine::addObject(Vector3 pos, Ogre::String name, Vector3 scale)
 AnimationState * GameEngine::CreateBasicNodeAnim(Ogre::String name, Ogre::Real duration, SceneNode * snode, Vector3 VectorArray[], int NrKeyFrames, bool loop)
 {
     Animation* animation = mSceneMgr->createAnimation(name, duration);
-    animation->setInterpolationMode(Animation::IM_SPLINE);
+    animation->setInterpolationMode(Animation::IM_LINEAR);
     NodeAnimationTrack* track = animation->createNodeTrack(0, snode);
 
-    Real step = duration/4.0;
+    Real step = duration/NrKeyFrames;
 
     TransformKeyFrame* key;
 
@@ -220,7 +217,7 @@ AnimationState * GameEngine::CreateBasicNodeAnim(Ogre::String name, Ogre::Real d
 
 void GameEngine::RegisterAnimation(AnimationState * animation)
 {
-    //mMainListener->AnimationArray.push_back(animation);
+    mMainListener->AnimationArray.insert(mMainListener->AnimationArray.end(), animation);
 }
 
 void GameEngine::defineResources()

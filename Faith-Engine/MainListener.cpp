@@ -17,9 +17,9 @@ MainListener::~MainListener()
 
 bool MainListener::frameStarted(const FrameEvent& evt)
 { 
-    for(int i =0; i != AnimationArray.size(); i++)
+    for(std::list<AnimationState*>::iterator itr = AnimationArray.begin(); itr != AnimationArray.end(); ++itr) 
     {
-        AnimationArray[i]->addTime(evt.timeSinceLastFrame);
+        (*itr)->addTime(evt.timeSinceLastFrame);
     }
     //sGameEngine->mCamNode->rotate(Vector3(0,0,50), Ogre::Degree(evt.timeSinceLastFrame*2),Node::TS_WORLD); //You can sey the "15" is a kind of speed. Its crushal to do actions according to timeSinceLastFrame.
     if (sGameEngine->mWindow->isClosed())

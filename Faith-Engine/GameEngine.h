@@ -46,7 +46,7 @@ public:
     void setupGUI();
     void setupScene();
     void setupInputSystem();
-    void createFrameListener();
+    FrameListener * createFrameListener(FrameListener*);
     void startRenderLoop();
 
     //Function which are not call on startup.
