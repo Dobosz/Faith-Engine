@@ -22,7 +22,6 @@ public:
 
     //od³¹cza OIS od okienka. bardzo wa¿ne pod linuxem.
     virtual void windowClosed(Ogre::RenderWindow* rw);
-
 };
 
 #endif

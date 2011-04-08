@@ -7,9 +7,7 @@
 
 class FreeCamOISListener : public Ogre::FrameListener, public OIS::KeyListener, public OIS::MouseListener, public Ogre::WindowEventListener
 {
-
 public:
-
     Ogre::RenderWindow* mWindow;
     OIS::Keyboard* mKeyboard;
     OIS::Mouse* mMouse;

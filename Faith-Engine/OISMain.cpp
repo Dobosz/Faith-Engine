@@ -37,7 +37,7 @@ void OISMain::windowResized(Ogre::RenderWindow* rw)
     unsigned int width, height, depth;
     int left, top;
     rw->getMetrics(width, height, depth, left, top);
- 
+
     const OIS::MouseState &ms = mMouse->getMouseState();
     ms.width = width;
     ms.height = height;

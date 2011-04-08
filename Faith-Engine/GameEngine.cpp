@@ -60,6 +60,7 @@ Light * GameEngine::addLight(Vector3 pos, ColourValue color)
     l->setCastShadows(true);
     l->setDiffuseColour(color);
     l->setSpecularColour(ColourValue(0.9,0.9,0.9));
+
     return l;
 }
 
@@ -183,6 +184,7 @@ SceneNode * GameEngine::addView(Vector3 pos, Vector3 look)
     Ogre::SceneNode * vNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
     vNode->setPosition(pos);
     vNode->lookAt(look, Node::TS_WORLD);
+
     return vNode;
 }
 
@@ -202,6 +204,7 @@ SceneNode * GameEngine::addObject(Vector3 pos, Ogre::String name, Ogre::String m
     n->attachObject(e);
     n->setPosition(pos);
     n->setScale(scale);
+
     return n;
 }
 
@@ -217,20 +220,21 @@ AnimationState * GameEngine::CreateBasicNodeAnim(Ogre::String name, Ogre::Real d
 
     for(int i = 0; i != NrKeyFrames; i++)
     {
-    key = track->createNodeKeyFrame(step*i);
-    key->setTranslate(VectorArray[i]);
-    key->setRotation(RotArray[i]);
+        key = track->createNodeKeyFrame(step*i);
+        key->setTranslate(VectorArray[i]);
+        key->setRotation(RotArray[i]);
     }
 
     AnimationState * NodeAnimationState = mSceneMgr->createAnimationState(name);
     NodeAnimationState->setEnabled(true);
     NodeAnimationState->setLoop(loop);
+
     return NodeAnimationState;
 }
 
 void GameEngine::RegisterAnimation(AnimationState * animation)
 {
-    mMainListener->AnimationArray.insert(mMainListener->AnimationArray.end(), animation);
+    mMainListener->AnimationArray.push_back(animation);
 }
 
 void GameEngine::defineResources()
