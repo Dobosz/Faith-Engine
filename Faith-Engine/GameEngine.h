@@ -52,6 +52,8 @@ public:
     //Function which are not call on startup.
     void Scene();
     SceneNode * addView(Vector3, Vector3 look = Vector3(0,0,0));
+    AnimationState * CreateBasicNodeAnim(Ogre::String name, Ogre::Real duration, SceneNode * snode, Vector3 VectorArray[], int NrKeyFrames, bool loop);
+    void RegisterAnimation(AnimationState * animation);
     void CamJump(SceneNode*);
     SceneNode * addObject(Vector3, Ogre::String, Vector3 scale = Vector3(1,1,1));
     Light * addLight(Vector3, ColourValue color = ColourValue(1,1,1));

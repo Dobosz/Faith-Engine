@@ -124,7 +124,7 @@ void GameEngine::setupCamera()
 void GameEngine::Scene()
 {
         /*      PRZYKLADOWA SCENA   POCZATEK    */
-    addObject(Vector3(0,40,0),"ogrehead", Vector3(0.3,0.3,0.3));
+    SceneNode * object1 = addObject(Vector3(0,40,0),"ogrehead", Vector3(0.3,0.3,0.3));
     //Swiatlo punktowe.
     addLight(Vector3(500,500,-500),ColourValue(0.0,0.7,0.7));
     addLight(Vector3(-0,500,500),ColourValue(0.2,0.2,0.9));
@@ -137,6 +137,11 @@ void GameEngine::Scene()
     mSceneMgr->getRootSceneNode()->createChildSceneNode()->attachObject(entGround);
     entGround->setMaterialName("Examples/Rockwall");
     entGround->setCastShadows(false);
+
+    Vector3 vec[] = {Vector3(50,0,50), Vector3(-50,0,-50)};
+    //CreateBasicNodeAnim("HeadRotate", 4.0, object1, {Vector3(50,50,50),Vector3(-50,-50,-50)}, 2, true);
+    Ogre::AnimationState * animationstate = CreateBasicNodeAnim("Animation", 4.0, object1, vec, 1,true);
+    RegisterAnimation(animationstate);
         /*      PRZYKLADOWA SCENA   KONIEC      */
 }
 
@@ -189,6 +194,33 @@ SceneNode * GameEngine::addObject(Vector3 pos, Ogre::String name, Vector3 scale)
     n->setPosition(pos);
     n->setScale(scale);
     return n;
+}
+
+AnimationState * GameEngine::CreateBasicNodeAnim(Ogre::String name, Ogre::Real duration, SceneNode * snode, Vector3 VectorArray[], int NrKeyFrames, bool loop)
+{
+    Animation* animation = mSceneMgr->createAnimation(name, duration);
+    animation->setInterpolationMode(Animation::IM_SPLINE);
+    NodeAnimationTrack* track = animation->createNodeTrack(0, snode);
+
+    Real step = duration/4.0;
+
+    TransformKeyFrame* key;
+
+    for(int i = 0; i != NrKeyFrames; i++)
+    {
+    key = track->createNodeKeyFrame(step*i);
+    key->setTranslate(VectorArray[i]);
+    }
+
+    AnimationState * NodeAnimationState = mSceneMgr->createAnimationState(name);
+    NodeAnimationState->setEnabled(true);
+    NodeAnimationState->setLoop(loop);
+    return NodeAnimationState;
+}
+
+void GameEngine::RegisterAnimation(AnimationState * animation)
+{
+    //mMainListener->AnimationArray.push_back(animation);
 }
 
 void GameEngine::defineResources()
