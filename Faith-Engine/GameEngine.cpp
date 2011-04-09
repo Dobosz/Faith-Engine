@@ -56,11 +56,10 @@ void GameEngine::Start()
 Light * GameEngine::addLight(Vector3 pos, ColourValue color)
 {
     Light * l = mSceneMgr->createLight();
-    l->setPosition(pos);
-    l->setCastShadows(true);
-    l->setDiffuseColour(color);
-    l->setSpecularColour(ColourValue(0.9,0.9,0.9));
-
+    l->setPosition(pos); //Set light pos
+    l->setCastShadows(true); //set shadow
+    l->setDiffuseColour(color); //Light color
+    l->setSpecularColour(ColourValue(0.9,0.9,0.9)); //Diflected light color
     return l;
 }
 
@@ -181,15 +180,16 @@ void GameEngine::startRenderLoop()
 
 SceneNode * GameEngine::addView(Vector3 pos, Vector3 look)
 {
+    //Create view node
     Ogre::SceneNode * vNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-    vNode->setPosition(pos);
-    vNode->lookAt(look, Node::TS_WORLD);
-
+    vNode->setPosition(pos); //mode pos
+    vNode->lookAt(look, Node::TS_WORLD); //look at TS_WORLD
     return vNode;
 }
 
 void GameEngine::CamJump(SceneNode* view)
 {
+    //Camera attach.
     mCamera->detachFromParent();
     mCamNode = view;
     mCamera->detachFromParent();
@@ -198,24 +198,25 @@ void GameEngine::CamJump(SceneNode* view)
 
 SceneNode * GameEngine::addObject(Vector3 pos, Ogre::String name, Ogre::String mesh, Vector3 scale)
 {
+    //load mesh with def material on scene
     Ogre::Entity* e = mSceneMgr->createEntity(name, mesh+".mesh");
-    e->setCastShadows(true);
-    SceneNode* n = mSceneMgr->getRootSceneNode()->createChildSceneNode(name+"Node");
-    n->attachObject(e);
+    e->setCastShadows(true); //set shadows
+    SceneNode* n = mSceneMgr->getRootSceneNode()->createChildSceneNode(name+"Node"); //create node for object
+    n->attachObject(e); //attachObject
     n->setPosition(pos);
     n->setScale(scale);
-
     return n;
 }
 
 AnimationState * GameEngine::CreateBasicNodeAnim(Ogre::String name, Ogre::Real duration, SceneNode * snode, Vector3 VectorArray[], int NrKeyFrames, Quaternion RotArray[], bool loop)
 {
-    Animation* animation = mSceneMgr->createAnimation(name, duration);
-    animation->setInterpolationMode(Animation::IM_LINEAR);
-    NodeAnimationTrack* track = animation->createNodeTrack(0, snode);
-    track->setUseShortestRotationPath(true);
-    Real step = duration/NrKeyFrames;
+    Animation* animation = mSceneMgr->createAnimation(name, duration); //Create animation
+    animation->setInterpolationMode(Animation::IM_LINEAR); //Set frames system. IM_LINEAR - not smooth; IM_SPLINE - smooth
+    NodeAnimationTrack* track = animation->createNodeTrack(0, snode); //Create anim tracker
+    track->setUseShortestRotationPath(true); // use shortest path
+    Real step = duration/NrKeyFrames; //step
 
+    //Creating frames
     TransformKeyFrame* key;
 
     for(int i = 0; i != NrKeyFrames; i++)
@@ -224,7 +225,7 @@ AnimationState * GameEngine::CreateBasicNodeAnim(Ogre::String name, Ogre::Real d
         key->setTranslate(VectorArray[i]);
         key->setRotation(RotArray[i]);
     }
-
+    //Create animation state.
     AnimationState * NodeAnimationState = mSceneMgr->createAnimationState(name);
     NodeAnimationState->setEnabled(true);
     NodeAnimationState->setLoop(loop);
@@ -234,6 +235,7 @@ AnimationState * GameEngine::CreateBasicNodeAnim(Ogre::String name, Ogre::Real d
 
 void GameEngine::RegisterAnimation(AnimationState * animation)
 {
+    //Pushing animation state on list back
     mMainListener->AnimationArray.push_back(animation);
 }
 

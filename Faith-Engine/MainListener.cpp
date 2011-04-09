@@ -17,6 +17,7 @@ MainListener::~MainListener()
 
 bool MainListener::frameStarted(const FrameEvent& evt)
 {
+    //adding time to all animation in list
     for(std::list<AnimationState*>::iterator itr = AnimationArray.begin(); itr != AnimationArray.end(); ++itr) 
         (*itr)->addTime(evt.timeSinceLastFrame);
 
