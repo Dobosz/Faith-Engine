@@ -9,6 +9,7 @@
 #include <OISFramelistener.h>
 #include <FreeCamOISListener.h>
 #include <NxOgreMain.h>
+#include <PhysicListener.h>
 
 class GameEngine
 {
@@ -34,7 +35,7 @@ public:
     FreeCamOISListener* mFreeCamOISListener;
     OISMain* OIS;
     CEGUIMain* GUI;
-    NxOgreMain* Physic;
+    NxOgreMain* mPhysic;
     // Singleton of GameEngine
     static GameEngine* getEngine();
 

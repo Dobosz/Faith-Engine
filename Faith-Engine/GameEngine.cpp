@@ -51,6 +51,7 @@ void GameEngine::Start()
     Scene();
     mOISFramelistener = static_cast<OISFramelistener *>(createFrameListener (new OISFramelistener(mWindow, OIS->mKeyboard, OIS->mMouse)));
     mFreeCamOISListener = static_cast<FreeCamOISListener *>(createFrameListener (new FreeCamOISListener(mWindow, OIS->mKeyboard, OIS->mMouse, mCamNode)));
+    createFrameListener(new PhysicListener());
     startRenderLoop();
 }
 
@@ -105,7 +106,7 @@ void GameEngine::setupScene()
 
 void GameEngine::setupPhysic()
 {
-    NxOgreMain* Physic = new NxOgreMain();
+    mPhysic = new NxOgreMain();
 }
 
 void GameEngine::setupCamera()

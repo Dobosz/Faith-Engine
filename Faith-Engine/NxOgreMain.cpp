@@ -22,5 +22,5 @@ NxOgreMain::NxOgreMain(void)
 
         //Tworzy system renderowania fizyki. To nie jest konieczne. Fizyka mo¿e dzia³aæ i siê nie renderowaæ.
         mRenderSystem = new OGRE3DRenderSystem(mScene);
-
+        mTime = NxOgre::TimeController::getSingleton();
     }

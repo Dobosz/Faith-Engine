@@ -9,6 +9,7 @@ public:
     NxOgre::World* mWorld;
     NxOgre::Scene* mScene;
     OGRE3DRenderSystem* mRenderSystem;
+    NxOgre::TimeController* mTime;
             
     NxOgreMain(void);
     ~NxOgreMain(void);
