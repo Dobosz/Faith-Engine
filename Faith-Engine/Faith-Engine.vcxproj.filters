@@ -39,6 +39,9 @@
     <ClCompile Include="FreeCamOISListener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NxOgreMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEngine.h">
@@ -60,6 +63,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="FreeCamOISListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NxOgreMain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

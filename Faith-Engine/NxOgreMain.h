@@ -10,9 +10,7 @@ public:
     NxOgre::Scene* mScene;
     OGRE3DRenderSystem* mRenderSystem;
             
-    NxOgreMain(void)
-    ~NxOgreMain(void)
-    {
-    }
+    NxOgreMain(void);
+    ~NxOgreMain(void);
 };
 
