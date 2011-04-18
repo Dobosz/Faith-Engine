@@ -92,7 +92,9 @@
     <ClInclude Include="NxOgreMain.h" />
     <ClInclude Include="OISFramelistener.h" />
     <ClInclude Include="OISMain.h" />
+    <ClInclude Include="PhysicListener.h" />
     <ClInclude Include="precompiled.h" />
+    <ClCompile Include="PhysicListener.cpp" />
     <ClCompile Include="precompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

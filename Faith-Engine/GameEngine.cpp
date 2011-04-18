@@ -46,6 +46,7 @@ void GameEngine::Start()
     setupGUI();
     setupScene();
     setupCamera();
+    setupPhysic();
     mMainListener = static_cast<MainListener *>(createFrameListener (new MainListener())); 
     Scene();
     mOISFramelistener = static_cast<OISFramelistener *>(createFrameListener (new OISFramelistener(mWindow, OIS->mKeyboard, OIS->mMouse)));
@@ -100,6 +101,11 @@ void GameEngine::setupScene()
     mSceneMgr = mRoot->createSceneManager(ST_GENERIC, "SceneManager"); //Inicjalizacja menadzera sceny.
     mSceneMgr->setAmbientLight(ColourValue(0.5,0.5,0.5)); //Global lighting
     mSceneMgr->setShadowTechnique(Ogre::SHADOWTYPE_STENCIL_ADDITIVE); //Shadows
+}
+
+void GameEngine::setupPhysic()
+{
+    NxOgreMain* Physic = new NxOgreMain();
 }
 
 void GameEngine::setupCamera()

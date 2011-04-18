@@ -8,6 +8,7 @@
 #include <CEGUIMain.h>
 #include <OISFramelistener.h>
 #include <FreeCamOISListener.h>
+#include <NxOgreMain.h>
 
 class GameEngine
 {
@@ -33,9 +34,11 @@ public:
     FreeCamOISListener* mFreeCamOISListener;
     OISMain* OIS;
     CEGUIMain* GUI;
+    NxOgreMain* Physic;
     // Singleton of GameEngine
     static GameEngine* getEngine();
 
+    void setupPhysic();
     void defineResources();
     void setupCamera();
     void Start();
