@@ -1,68 +1,73 @@
 “Faith” engine specification
 Implementations:
-> Stage 1 – The Setting:
-o Basic scene setup with Ogre.
-o Basic physic world implementation for gravity with PhysX (NxOgre).
-o Mesh entry system, according to game specification. 
-o Lights entry system.
-o Pre-input system (keyboard and mouse).
-o Camera and viewpoint entry.
-o Animation engine including animation blending.
-> Stage 2 – The Game Engine part 1:
-o Creating position system on scene (255, 255, 5).
-o Creating object entry on fixed scene:
-* Every object has 3d position (x, y, z).
-* Object can (not must) have mesh.
-* Object must have deep (z) size (max 5).
-* Object has to determine if player will collision with it or not. If not the PhysX will ignore the object.
-* Object can have animations. Looped or run by trigger.
-* Object CAN NOT move. Moveable object will be called “Items” and won’t have fixed position like objects.
-o Displaying bitmap on plane in BG.
-o Creating player entry:
-* Player move with not fixed position (not on grid).
-* Tracking the player on fixed grid (x, y, z), so we know if he for example stand on trigger.
-* Player equipment (weapons, armor, etc.).
-* Player data (HP, Mana, Stamina, etc.).
-* Status (poisoned, slow falling, at jump(!) ,etc.).
-* Player mash entry.
-* Player animation.
-* Movement data (how fast can he run, how long and far jump, etc.).
-* Can move in deep only on 2, 3 and 4 layer. 1 and 5 are only for objects.
-> Stage 3 – The Game Engine part 2:
-o Creating Triggers system, based on trippers system:
-* Position (x, y ,z).
-* What (player, NPC, item).
-* Condition (HP = 50%, Dead, Poisoned, etc.).
-* On (player, NPC, object).
-* Action (play animation, kill, damage, heal).
-* Active/Inactive.
 
-o Creating NPC:
-* Dialogs(?)
-* Some actions(?)
-* Animations.
-o Creating Enemies:
-* Based on NPCs.
-* Stats (HP, Mana).
-* (data based on battle system).
+> Stage 1 – The Setting:
+   o Basic scene setup with Ogre.
+   o Basic physic world implementation for gravity with PhysX (NxOgre).
+   o Mesh entry system, according to game specification. 
+   o Lights entry system.
+   o Pre-input system (keyboard and mouse).
+   o Camera and viewpoint entry.
+   o Animation engine including animation blending.
+
+> Stage 2 – The Game Engine part 1:
+   o Creating position system on scene (255, 255, 5).
+   o Creating object entry on fixed scene:
+      * Every object has 3d position (x, y, z).
+      * Object can (not must) have mesh.
+      * Object must have deep (z) size (max 5).
+      * Object has to determine if player will collision with it or not. If not the PhysX will ignore the object.
+      * Object can have animations. Looped or run by trigger.
+      * Object CAN NOT move. Moveable object will be called “Items” and won’t have fixed position like objects.
+   o Displaying bitmap on plane in BG.
+   o Creating player entry:
+      * Player move with not fixed position (not on grid).
+      * Tracking the player on fixed grid (x, y, z), so we know if he for example stand on trigger.
+      * Player equipment (weapons, armor, etc.).
+      * Player data (HP, Mana, Stamina, etc.).
+      * Status (poisoned, slow falling, at jump(!) ,etc.).
+      * Player mash entry.
+      * Player animation.
+      * Movement data (how fast can he run, how long and far jump, etc.).
+      * Can move in deep only on 2, 3 and 4 layer. 1 and 5 are only for objects.
+
+> Stage 3 – The Game Engine part 2:
+   o Creating Triggers system, based on trippers system:
+      * Position (x, y ,z).
+      * What (player, NPC, item).
+      * Condition (HP = 50%, Dead, Poisoned, etc.).
+      * On (player, NPC, object).
+      * Action (play animation, kill, damage, heal).
+      * Active/Inactive.
+   o Creating NPC:
+      * Dialogs(?)
+      * Some actions(?)
+      * Animations.
+   o Creating Enemies:
+      * Based on NPCs.
+      * Stats (HP, Mana).
+      * (data based on battle system).
+
 > Stage 4 – The Game Engine part 3:
-o Battle system:
-* (?)
-o Traps system:
-* Special reactivated triggers.
-* Die animation on PhysX’s collisions with player.
+   o Battle system:
+      * (?)
+   o Traps system:
+      * Special reactivated triggers.
+      * Die animation on PhysX’s collisions with player.
+
 > Stage 5 – The Engine finalizing:
-o Maps load from file (headers design in future).
-o Implementing some kind of open source GUI (QuickGUI, MyGUI, CEGUI).
-o Building GUI:
-* Designing Manu.
-* Designing HUD (if any).
-* Designing Skills trees
-* Etc.
-o Designing keyboard controls.
+   o Maps load from file (headers design in future).
+   o Implementing some kind of open source GUI (QuickGUI, MyGUI, CEGUI).
+   o Building GUI:
+      * Designing Manu.
+      * Designing HUD (if any).
+      * Designing Skills trees
+      * Etc.
+   o Designing keyboard controls.
+
 > Stage 6 – Building The Game:
-o Create map designing software along with basic object, traps, enemies.
-o Designing map file format (headers) and implementing it to the engine.
-o Build levels.
-o Test for bugs.
-o Release.
+   o Create map designing software along with basic object, traps, enemies.
+   o Designing map file format (headers) and implementing it to the engine.
+   o Build levels.
+   o Test for bugs.
+   o Release.
