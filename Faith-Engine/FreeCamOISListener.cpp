@@ -1,6 +1,7 @@
 
 #include <precompiled.h>
 #include <FreeCamOISListener.h>
+#include <GameEngine.h> //only for blender animation test
 
 FreeCamOISListener::FreeCamOISListener(Ogre::RenderWindow* Window, OIS::Keyboard* Keyboard, OIS::Mouse* Mouse, Ogre::SceneNode* CamNode)
 {
@@ -41,6 +42,7 @@ bool FreeCamOISListener::keyPressed( const OIS::KeyEvent &arg )
 
     switch(arg.key)
     {
+        case OIS::KC_TAB: sGameEngine->AnimNinja->blend("Walk", AnimationBlender::BlendWhileAnimating, 0.2, true ); break; //Animation blender test
         case OIS::KC_ESCAPE:
             Shutdown = false;
         break;
@@ -85,6 +87,7 @@ bool FreeCamOISListener::keyReleased( const OIS::KeyEvent &arg )
 
     switch (arg.key)
     {
+        case OIS::KC_TAB: sGameEngine->AnimNinja->blend("Idle1", AnimationBlender::BlendWhileAnimating, 0.2, true ); break; //Animation blender test
         case OIS::KC_UP:
         case OIS::KC_W:
              mDirection.z = 0;

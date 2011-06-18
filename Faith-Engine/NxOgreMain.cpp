@@ -20,7 +20,7 @@ NxOgreMain::NxOgreMain(void)
         mScene->getMaterial(0)->setDynamicFriction(0.5);
         mScene->getMaterial(0)->setRestitution(0.1);
 
-        //Tworzy system renderowania fizyki. To nie jest konieczne. Fizyka mo¿e dzia³aæ i siê nie renderowaæ.
+        //Tworzy system renderowania fizyki. To nie jest konieczne. Fizyka mo¿e dzia³aEi siEnie renderowaE
         mRenderSystem = new OGRE3DRenderSystem(mScene);
         mTime = NxOgre::TimeController::getSingleton();
     }

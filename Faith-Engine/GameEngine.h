@@ -26,6 +26,8 @@ protected:
 public:
     // TODO: Move all classes to private part and make get functions...
 
+    AnimationBlender * AnimNinja; //test animation blending
+
     SceneManager *mSceneMgr; //Menadzer sceny, to przez niego umieszczasz elmenty na scenie. Jest public, bo nie wiem jeszcze czy cos tam nie bedzie chcialo sie do nigo odwolac.
     Camera* mCamera;
     SceneNode* mCamNode;
@@ -58,6 +60,7 @@ public:
     SceneNode * addView(Vector3, Vector3 look = Vector3(0,0,0));
     AnimationState * CreateBasicNodeAnim(Ogre::String name, Ogre::Real duration, SceneNode * snode, Vector3 VectorArray[], int NrKeyFrames, Quaternion RotArray[] = new Ogre::Quaternion[], bool loop = true);
     void RegisterAnimation(AnimationState * animation);
+    void RegisterBlendedAnimation(AnimationBlender * animation);
     void CamJump(SceneNode*);
     SceneNode * addObject(Vector3, Ogre::String, Ogre::String, Vector3 scale = Vector3(1,1,1));
     Light * addLight(Vector3, ColourValue color = ColourValue(1,1,1));

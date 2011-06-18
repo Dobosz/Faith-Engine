@@ -10,6 +10,7 @@ class MainListener : public FrameListener
 {
 public:
     std::list<AnimationState *> AnimationArray;
+    std::list<AnimationBlender *> AnimationBlendedArray;
     MainListener(void);
     ~MainListener(void);
     bool frameStarted(const FrameEvent& evt);

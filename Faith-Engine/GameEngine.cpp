@@ -162,7 +162,14 @@ void GameEngine::Scene()
     RegisterAnimation(CreateBasicNodeAnim("Animation2", 4.0, object2, vec2, 4, q2));
     RegisterAnimation(CreateBasicNodeAnim("Animation3", 4.0, object3, vec3, 4, q3));
 
-    //RegisterAnimation(CreateBasicNodeAnim("CamAnimation", 20.0, mCamNode, vec1, 4));
+    Ogre::Entity * e = mSceneMgr->createEntity("Ninja", "ninja.mesh");
+    Ogre::SceneNode * n = mSceneMgr->getRootSceneNode()->createChildSceneNode();
+    n->attachObject(e);
+    AnimNinja = new AnimationBlender(e);
+    AnimNinja->init("Idle1", true);
+    RegisterBlendedAnimation(AnimNinja);
+
+
         /*      PRZYKLADOWA SCENA   KONIEC      */
 }
 
@@ -244,6 +251,12 @@ void GameEngine::RegisterAnimation(AnimationState * animation)
 {
     //Pushing animation state on list back
     mMainListener->AnimationArray.push_back(animation);
+}
+
+void GameEngine::RegisterBlendedAnimation(AnimationBlender * animation)
+{
+    //Pushing animation state on list back
+    mMainListener->AnimationBlendedArray.push_back(animation);
 }
 
 void GameEngine::defineResources()

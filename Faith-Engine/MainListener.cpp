@@ -17,8 +17,12 @@ MainListener::~MainListener()
 
 bool MainListener::frameStarted(const FrameEvent& evt)
 {
-    //adding time to all animation in list
+    //adding time to normal animation in list
     for(std::list<AnimationState*>::iterator itr = AnimationArray.begin(); itr != AnimationArray.end(); ++itr) 
+        (*itr)->addTime(evt.timeSinceLastFrame);
+
+    //adding time to blended animation in list
+    for(std::list<AnimationBlender*>::iterator itr = AnimationBlendedArray.begin(); itr != AnimationBlendedArray.end(); ++itr) 
         (*itr)->addTime(evt.timeSinceLastFrame);
 
     //sGameEngine->mCamNode->rotate(Vector3(0,0,50), Ogre::Degree(evt.timeSinceLastFrame*2),Node::TS_WORLD); //You can sey the "15" is a kind of speed. Its crushal to do actions according to timeSinceLastFrame.

@@ -27,6 +27,7 @@ bool OISFramelistener::frameRenderingQueued(const Ogre::FrameEvent& evt)
 //-------------------------------------------------------------------------------------
 bool OISFramelistener::keyPressed( const OIS::KeyEvent &arg )
 {
+
     sCEGUI().injectKeyDown(arg.key);
     sCEGUI().injectChar(arg.text);
 

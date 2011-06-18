@@ -3,7 +3,7 @@
 #define _OISFramelistener_H__
 
 #include <precompiled.h>
-#include<CEGUIMain.h>
+#include <CEGUIMain.h>
 
 class OISFramelistener : public Ogre::FrameListener, public OIS::KeyListener, public OIS::MouseListener, public Ogre::WindowEventListener
 {

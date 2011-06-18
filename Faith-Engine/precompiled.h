@@ -11,6 +11,7 @@
 #include <CEGUI.h> // GUI lib
 #include <RendererModules/Ogre/CEGUIOgreRenderer.h> // Additional rendering for GUI
 #include <NxOgreMain.h>
+#include <AnimationBlender.h>
 
 // Accessor defines
 #define sGameEngine GameEngine::getEngine()

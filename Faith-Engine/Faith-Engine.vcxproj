@@ -75,6 +75,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AnimationBlender.cpp" />
     <ClCompile Include="CEGUIMain.cpp" />
     <ClCompile Include="FreeCamOISListener.cpp" />
     <ClCompile Include="GameEngine.cpp" />
@@ -85,6 +86,7 @@
     <ClCompile Include="OISMain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimationBlender.h" />
     <ClInclude Include="CEGUIMain.h" />
     <ClInclude Include="FreeCamOISListener.h" />
     <ClInclude Include="GameEngine.h" />
