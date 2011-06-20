@@ -84,6 +84,9 @@
     <ClCompile Include="NxOgreMain.cpp" />
     <ClCompile Include="OISFramelistener.cpp" />
     <ClCompile Include="OISMain.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Unit.cpp" />
+    <ClCompile Include="WorldObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimationBlender.h" />
@@ -95,6 +98,7 @@
     <ClInclude Include="OISFramelistener.h" />
     <ClInclude Include="OISMain.h" />
     <ClInclude Include="PhysicListener.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="precompiled.h" />
     <ClCompile Include="PhysicListener.cpp" />
     <ClCompile Include="precompiled.cpp">
@@ -103,6 +107,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClInclude Include="Unit.h" />
+    <ClInclude Include="WorldObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
