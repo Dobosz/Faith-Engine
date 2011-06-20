@@ -1,4 +1,4 @@
-
+#include <precompiled.h>
 #include <Unit.h>
 
 Unit::Unit() : WorldObject()
