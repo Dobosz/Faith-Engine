@@ -4,7 +4,7 @@
 
 #include "Unit.h"
 
-class Player : public Unit
+class Player
 {
 public:
 

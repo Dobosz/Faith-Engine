@@ -25,6 +25,18 @@
     <Filter Include="Source Files\Core">
       <UniqueIdentifier>{077cdc1a-2ff8-4085-8bb5-db9b253b5e02}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Physic">
+      <UniqueIdentifier>{3f72de5f-3913-4355-a65c-25dd712fb6ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physic">
+      <UniqueIdentifier>{4b4f5051-b47d-4e23-b053-b65dff48d8a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Camera">
+      <UniqueIdentifier>{9c5810c5-a1cd-4001-9c4e-2cb90595aa14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Camera">
+      <UniqueIdentifier>{6152e3b1-2b75-4a83-bf87-01c3e3528946}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Unit.cpp">
@@ -42,9 +54,6 @@
     <ClCompile Include="CEGUIMain.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="FreeCamOISListener.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="GameEngine.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
@@ -54,20 +63,23 @@
     <ClCompile Include="MainListener.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="NxOgreMain.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="OISFramelistener.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
     <ClCompile Include="OISMain.cpp">
       <Filter>Source Files\Core</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicListener.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="precompiled.cpp">
       <Filter>Source Files\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicListener.cpp">
+      <Filter>Source Files\Physic</Filter>
+    </ClCompile>
+    <ClCompile Include="NxOgreMain.cpp">
+      <Filter>Source Files\Physic</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeCamOISListener.cpp">
+      <Filter>Source Files\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -86,16 +98,10 @@
     <ClInclude Include="CEGUIMain.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="FreeCamOISListener.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="GameEngine.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="MainListener.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="NxOgreMain.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="OISFramelistener.h">
@@ -104,11 +110,17 @@
     <ClInclude Include="OISMain.h">
       <Filter>Header Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="PhysicListener.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="precompiled.h">
       <Filter>Header Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="NxOgreMain.h">
+      <Filter>Header Files\Physic</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicListener.h">
+      <Filter>Header Files\Physic</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeCamOISListener.h">
+      <Filter>Header Files\Camera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
