@@ -1,6 +1,7 @@
 
 #include <precompiled.h>
 #include <GameEngine.h>
+#include <MovableWorldObject.h>
 
 GameEngine::GameEngine()
 {
@@ -169,6 +170,7 @@ void GameEngine::Scene()
     AnimNinja->init("Idle1", true);
     RegisterBlendedAnimation(AnimNinja);
 
+    MovableWorldObject * MWO_object1 = new MovableWorldObject("object1",0,100,0,0,100,0,"dice-final",2.5,true,0);
 
         /*      PRZYKLADOWA SCENA   KONIEC      */
 }

@@ -13,5 +13,6 @@ public:
             
     NxOgreMain(void);
     ~NxOgreMain(void);
+    void CreateMaterial(int, double, double, double);
 };
 

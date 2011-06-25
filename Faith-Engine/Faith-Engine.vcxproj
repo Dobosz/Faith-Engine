@@ -81,6 +81,7 @@
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainListener.cpp" />
+    <ClCompile Include="MovableWorldObject.cpp" />
     <ClCompile Include="NxOgreMain.cpp" />
     <ClCompile Include="OISFramelistener.cpp" />
     <ClCompile Include="OISMain.cpp" />
@@ -94,6 +95,7 @@
     <ClInclude Include="FreeCamOISListener.h" />
     <ClInclude Include="GameEngine.h" />
     <ClInclude Include="MainListener.h" />
+    <ClInclude Include="MovableWorldObject.h" />
     <ClInclude Include="NxOgreMain.h" />
     <ClInclude Include="OISFramelistener.h" />
     <ClInclude Include="OISMain.h" />

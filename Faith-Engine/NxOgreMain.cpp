@@ -23,4 +23,13 @@ NxOgreMain::NxOgreMain(void)
         //Tworzy system renderowania fizyki. To nie jest konieczne. Fizyka mo¿e dzia³aEi siEnie renderowaE
         mRenderSystem = new OGRE3DRenderSystem(mScene);
         mTime = NxOgre::TimeController::getSingleton();
+
+        //Opening folder.
+        NxOgre::ResourceSystem::getSingleton()->openArchive("media", "file:media/models");
     }
+void NxOgreMain::CreateMaterial(int id, double StaticFriction, double DynamicFriction, double Restitution)
+{
+        mScene->getMaterial(id)->setStaticFriction(StaticFriction);
+        mScene->getMaterial(id)->setDynamicFriction(DynamicFriction);
+        mScene->getMaterial(id)->setRestitution(Restitution);
+}
